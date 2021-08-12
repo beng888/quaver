@@ -27,8 +27,8 @@
     }
   },
   "include": [
-    "src",
-    "public",
+    "src/**/*",
+    "public/**/*",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
