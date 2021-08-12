@@ -1,14 +1,12 @@
 import { useRouter } from "next/router";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import dynamic from "next/dynamic";
+import Modal from "./Modal";
 import MessengerCustomerChat from "react-messenger-customer-chat";
 
 export default function Layout({ children }) {
   const router = useRouter();
   const { pathname } = router;
-
-  const Modal = dynamic(() => import("./Modal"));
 
   return (
     <div className="min-h-screen bg-pink-50 ">
