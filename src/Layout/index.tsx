@@ -19,7 +19,7 @@ export default function Layout({ children }) {
       {pathname !== "/[cakes]/[slug]" && <Footer pathname={pathname} />}
 
       <MessengerCustomerChat
-        pageId="100000686899395"
+        pageId="150793413803258"
         appId="293340379212840"
         // htmlRef="<REF_STRING>"
       />
