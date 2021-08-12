@@ -20,7 +20,7 @@
       "@static/*": ["src/static/*"],
       "@context/*": ["src/context/*"],
       "@common/*": ["src/common/*"],
-      "@layout/*": ["src/layout/*"],
+      "@layout/*": ["src/Layout/*"],
       "@helpers/*": ["src/helpers/*"],
       "@lib/*": ["src/lib/*"],
       "@images/*": ["public/images/*"]
