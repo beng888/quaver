@@ -27,6 +27,8 @@
     }
   },
   "include": [
+    "src",
+    "public",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
