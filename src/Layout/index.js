@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import dynamic from "next/dynamic";
+import MessengerCustomerChat from "react-messenger-customer-chat";
 
 export default function Layout({ children }) {
   const router = useRouter();
@@ -18,6 +19,12 @@ export default function Layout({ children }) {
       {children}
 
       {pathname !== "/[cakes]/[slug]" && <Footer pathname={pathname} />}
+
+      <MessengerCustomerChat
+        pageId="100000686899395"
+        appId="293340379212840"
+        // htmlRef="<REF_STRING>"
+      />
     </div>
   );
 }

@@ -1,28 +1,53 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import useGlobalContext from "@context/index";
+import { cakeSlice } from "@static/index";
+import { useLocomotiveScroll } from "react-locomotive-scroll";
 
 export default function Cake({ data }) {
+  const { scroll } = useLocomotiveScroll();
   const { colors } = useGlobalContext();
   const [color] = useState(colors[Math.floor(Math.random() * colors?.length)]);
+  const [inView, setInView] = useState(null);
 
-  console.log(data);
+  // console.log(data);
+  console.log("%c%s", "color: #ffcc00", inView);
 
   const shuffled = data.category.cakes.sort(() => 0.5 - Math.random());
 
+  useEffect(() => {
+    scroll?.on("call", (i) => {
+      setInView(`#cake-${i}`);
+    });
+  }, [scroll]);
+
+  const handleClick = (i) => {
+    scroll.scrollTo(`#cake-${i}`, {
+      duration: 500,
+    });
+  };
+
   return (
     <div className="min-h-screen">
-      <div className="grid grid-cols-2 gap-[5vw]">
+      <div className="grid grid-cols-2">
         {/* <div className="fixed h-screen w-screen grid place-content-center pointer-events-none">
           <div className="grid">asd</div>
         </div> */}
         <div
-          data-scroll
-          data-scroll-class="show"
-          className="transform translate-y-[100vh] duration-[1.2s] ease-out"
+        // data-scroll
+        // data-scroll-class="show"
+        // className="transform translate-y-[100vh] duration-[1.2s] ease-out"
         >
-          {data.images.map((v) => (
-            <div key={v.fileName} className="relative h-screen">
+          {data.images.map((v, i) => (
+            <div
+              data-scroll
+              data-scroll-repeat
+              data-scroll-call={i}
+              data-scroll-offset="60%,60%"
+              id={`cake-${i}`}
+              key={v.fileName}
+              className="relative h-screen"
+            >
               <Image
                 src={v.url}
                 alt={v.fileName}
@@ -36,7 +61,7 @@ export default function Cake({ data }) {
           <div
             data-scroll
             data-scroll-sticky
-            className="h-screen grid place-content-center border border-red-400 px-8"
+            className="h-screen grid place-content-center px-8"
             data-scroll-target="#target"
           >
             <div>
@@ -60,6 +85,19 @@ export default function Cake({ data }) {
                 </div>
                 <p className="max-w-[48ch] text-sm">{data.description}</p>
               </div>
+              <div className="flex gap-2">
+                {data.images.map((v, i) => (
+                  <p
+                    key={v.fileName}
+                    onClick={() => handleClick(i)}
+                    style={{
+                      color: `#cake-${i}` === inView ? "#EA749C" : "#DCC076",
+                    }}
+                  >
+                    {cakeSlice}
+                  </p>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -82,7 +120,7 @@ export default function Cake({ data }) {
               <p>from ₱{v.price}.00</p>
             </div>
           ))}
-        </div>{" "}
+        </div>
       </div>
     </div>
   );
