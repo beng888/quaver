@@ -4,6 +4,7 @@ import useGlobalContext from "@context/index";
 import { useRouter } from "next/router";
 import { getCakes } from "@lib/data";
 import { ICategory } from "@lib/interfaces";
+import { splitText } from "@helpers/index";
 import Link from "next/link";
 import Baking from "@images/baking.gif";
 import Image from "next/image";
@@ -32,7 +33,7 @@ export default function Modal() {
 
         return setData(data.category);
       })();
-  }, [slug]);
+  }, [slug, colors]);
 
   const OK = data?.cakes?.length > 0;
 
@@ -44,7 +45,7 @@ export default function Modal() {
     >
       <Link href="/">
         <a
-          className={`h-12 w-12 bg-tertiary absolute top-12 right-12 rounded-full cursor-pointer z-50`}
+          className={`h-12 w-12 bg-tertiary absolute top-[2vw] right-[2vw] rounded-full cursor-pointer z-50`}
           onClick={() => {
             SetModalOpen(false);
             setData(null);
@@ -71,15 +72,13 @@ export default function Modal() {
         <div
           className={`${!isLoading && OK && "opacity-0 duration-1000"} ${
             !ValModalOpen && "opacity-0"
-          } inset-0 absolute grid place-content-center`}
+          } inset-0 absolute grid place-content-center pointer-events-none`}
         >
           {cupcake_logo(color)}
 
-          <div
-            id="loading"
-            className="text-center font-black tracking-widest font-serif text-5xl"
-          >
-            {Array.from("Loading...").map((v, i) => (
+          <div className="waving text-center font-black tracking-widest font-serif text-5xl">
+            {splitText("Loading...", 200, true)}
+            {/* {Array.from("Loading...").map((v, i) => (
               <span
                 key={i}
                 style={{
@@ -89,24 +88,17 @@ export default function Modal() {
               >
                 {v}
               </span>
-            ))}
+            ))} */}
           </div>
         </div>
       )}
 
-      {/* 
       <div
         className={`${
-          OK ? "translate-y-0" : "translate-y-1/4"
-        } duration-700 transform relative z-20 w-full h-[90%] max-w-7xl`}
-      >
-        {ValModalOpen && <Carousel data={data} />}
-      </div> */}
-
-      <div
-        className={`${
-          !isLoading && OK ? "opacity-100" : "opacity-0"
-        } duration-1000 transform relative z-20 w-full h-[90%] max-w-7xl`}
+          !isLoading && OK
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
+        } duration-1000 transform relative z-20 w-full h-[95%]`}
       >
         {slug && <Carousel data={data} />}
       </div>

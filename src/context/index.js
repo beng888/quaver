@@ -2,6 +2,8 @@ import React, { useContext, useState, useEffect } from "react";
 
 const GlobalContext = React.createContext();
 
+export const colors = ["#EFA4BF", "#F9E5AE", "#85BCE1", "#8EDBD3", "#C27628"];
+
 export function GlobalContextWrapper({ children }) {
   const [navBG, setNavBG] = useState(false);
   const [navMarker, setNavMarker] = useState("start");
@@ -25,7 +27,7 @@ export function GlobalContextWrapper({ children }) {
         navMarker: [navMarker, setNavMarker],
         modalOpen: [modalOpen, setModalOpen],
         Darkenfooter: [darkenfooter, setDarkenfooter],
-        colors: ["#EFA4BF", "#F9E5AE", "#85BCE1", "#8EDBD3", "#C27628"],
+        colors,
         isMobile,
       }}
     >

@@ -97,7 +97,7 @@ export default function Navbar() {
 
           <div
             tabIndex={0}
-            className="absolute p-3 overflow-hidden duration-700 transform bg-white shadow-lg md:hidden bg-opacity-70 rounded-3xl right-4 group focus:-translate-x-4 focus:translate-y-32"
+            className="absolute p-3 overflow-hidden duration-700 transform bg-white shadow-lg md:hidden bg-opacity-70 rounded-3xl right-4 group focus:translate-y-24"
           >
             <svg
               viewBox="0 0 100 100"
@@ -111,7 +111,7 @@ export default function Navbar() {
                 <rect y="70" width="100" height="15" rx="5"></rect>{" "}
               </g>
             </svg>
-            <ul className="whitespace-nowrap grid gap-[3vw] max-h-0 max-w-0 group-focus:max-h-96 group-focus:max-w-max overflow-hidden group-focus:duration-700">
+            <ul className="whitespace-nowrap grid gap-[3vw] max-h-0 max-w-0 group-focus:max-h-96 group-focus:max-w-max overflow-hidden group-focus:duration-[2s]">
               {links.map((n, i) => (
                 <li
                   key={n.id}

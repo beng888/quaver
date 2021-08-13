@@ -18,7 +18,13 @@ export default function IndexPage({ data }) {
 
   return (
     <LocomotiveScrollProvider
-      options={{ smooth: true }}
+      options={{
+        smooth: true,
+        tablet: {
+          smooth: true,
+          breakpoint: 768,
+        },
+      }}
       watch={[]}
       containerRef={containerRef}
     >

@@ -14,6 +14,10 @@ export default function CAKE({ cake }: { cake: ICake }) {
     <LocomotiveScrollProvider
       options={{
         smooth: true,
+        tablet: {
+          smooth: true,
+          breakpoint: 768,
+        },
       }}
       watch={[]}
       containerRef={containerRef}

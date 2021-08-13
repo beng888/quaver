@@ -73,9 +73,16 @@ export default function Category({ data }) {
             width={500}
           />
         </div>
-        <p className="capitalize text-center">
-          {splitText(data?.title, "-3vw")}
+
+        <p
+          data-scroll
+          data-scroll-class="show-wave"
+          className="wave text-center capitalize text-7xl tracking-wide sm:text-8xl lg:text-8xl xl:text-9xl font-serif mb-8"
+          style={{ color: color, textShadow: "1px 1px 3px rgba(0,0,0,0.6)" }}
+        >
+          {splitText(data?.title)}
         </p>
+
         <div id="cakes" className="grid place-content-center gap-12 my-24">
           {data?.cakes?.map((c, i) => (
             <div key={c.images[0].fileName} className="relative w-96 h-96">
@@ -119,7 +126,13 @@ export default function Category({ data }) {
             />
           </div>
 
-          {splitText(data?.title, "-3vw")}
+          <p
+            data-scroll
+            data-scroll-class="show-wave"
+            className="wave text-5xl tracking-wide sm:text-8xl lg:text-8xl xl:text-9xl font-serif mb-8"
+          >
+            {splitText(data?.title)}
+          </p>
         </div>
 
         <div

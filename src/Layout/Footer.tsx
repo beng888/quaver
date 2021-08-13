@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Image from "next/image";
 
 import telephone from "@images/telephone.svg";
@@ -6,23 +5,37 @@ import email from "@images/email.svg";
 import facebook from "@images/facebook.svg";
 import Button from "@components/Button";
 import useGlobalContext from "@context/index";
+import { useState } from "react";
 
 export default function Footer({ pathname }) {
   const { Darkenfooter } = useGlobalContext();
   const [darkenfooter] = Darkenfooter;
+  const [emailResponse, setEmailResponse] = useState(null);
+  const [sending, setSending] = useState(false);
 
-  const initData = {
-    email: "",
-    name: "",
-    message: "",
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setSending(true);
+    setEmailResponse(null);
+    const formData = {};
+
+    Array.from(e.currentTarget.elements).forEach(({ name, value }) => {
+      if (!name) return;
+      formData[name] = value;
+    });
+
+    const res = await fetch(`/api/mail`, {
+      method: "post",
+      body: JSON.stringify(formData),
+    });
+
+    const data = await res.json();
+
+    console.log(data);
+
+    setEmailResponse(data);
+    setSending(false);
   };
-  const [data, setData] = useState(initData);
-
-  const onChange =
-    () =>
-    ({ target }) => {
-      setData({ ...data, [target.name]: target.value });
-    };
 
   return (
     <div
@@ -212,34 +225,72 @@ export default function Footer({ pathname }) {
             <hr className="w-full border-t-2" />
           </div>
 
-          <form
-            onSubmit={(e) => e.preventDefault()}
-            className="grid w-full gap-4 "
-          >
+          <form onSubmit={handleSubmit} className="grid w-full gap-4 relative">
             <input
-              value={data.email}
               name="email"
               type="email"
               placeholder="Email address*"
-              onChange={onChange()}
+              maxLength={30}
+              required
             />
             <input
-              value={data.name}
               name="name"
               type="text"
               placeholder="Your name*"
-              onChange={onChange()}
+              maxLength={30}
+              required
             />
             <textarea
               className="resize-none"
-              value={data.message}
               name="message"
               cols={30}
               placeholder="Message*"
               rows={5}
-              onChange={onChange()}
+              required
+              minLength={20}
             />
-            <Button>Send</Button>
+
+            <Button
+              disabled={sending || emailResponse?.message}
+              cls={`${
+                emailResponse?.message
+                  ? "bg-green-400"
+                  : sending
+                  ? "bg-gray-400"
+                  : "bg-secondary"
+              } ${
+                emailResponse?.message && "cursor-default"
+              } relative duration-500 font-semibold tracking-wide text-xl py-2`}
+            >
+              <p
+                className={`${
+                  (emailResponse?.message || sending) &&
+                  "-translate-x-1/4 opacity-0"
+                } duration-500 transform`}
+              >
+                Send
+              </p>
+              <p
+                className={`${
+                  !sending && "translate-y-full opacity-0"
+                } duration-500 transform absolute inset-0 m-auto h-[fit-content]`}
+              >
+                Sending...
+              </p>
+              <p
+                className={`${
+                  !emailResponse?.message && "translate-x-1/4 opacity-0"
+                } duration-500 transform absolute inset-0 m-auto h-[fit-content]`}
+              >
+                {emailResponse?.message}
+              </p>
+            </Button>
+
+            {emailResponse?.errorMessage && (
+              <p className="absolute bottom-0 transform translate-y-full text-red-500 font-black py-1 mt-2 w-full">
+                ⚠️ {emailResponse?.errorMessage}
+              </p>
+            )}
           </form>
         </div>
       </div>

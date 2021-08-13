@@ -3,13 +3,20 @@
   box-sizing: border-box;
 }
 
-.line-clamp-3 {
-  -webkit-line-clamp: 3;
+.line-clamp {
   overflow: hidden;
   text-overflow: ellipsis;
   word-wrap: normal;
   -webkit-box-orient: vertical;
   display: -webkit-box;
+}
+
+.clamp-3 {
+  -webkit-line-clamp: 3;
+}
+
+.clamp-2 {
+  -webkit-line-clamp: 2;
 }
 
 input,
@@ -18,23 +25,6 @@ textarea {
   border: 1px solid #ddd;
   text-align: center;
   width: 100%;
-}
-
-.anim-span {
-  animation: move-text 0.5s forwards;
-}
-
-@keyframes move-text {
-  100% {
-    bottom: 0;
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.show {
-  transform: translate(0) rotate(0) scale(1);
-  opacity: 1;
 }
 
 .path {
@@ -86,18 +76,41 @@ textarea {
   }
 }
 
-#loading > span {
-  animation: wave 1s ease-in-out infinite alternate;
+.waving span {
+  animation: waving 1s ease-in-out infinite alternate;
   animation-delay: var(--delay);
   position: relative;
 }
 
-@keyframes wave {
+@keyframes waving {
   from {
     bottom: 0;
   }
 
   to {
     bottom: 15px;
+  }
+}
+
+.show {
+  transform: translate(0) rotate(0) scale(1);
+  opacity: 1;
+}
+
+.wave span {
+  position: relative;
+  opacity: 0;
+  bottom: -100px;
+}
+
+.show-wave span {
+  animation: wave 500ms ease-in-out forwards;
+  animation-delay: var(--delay);
+}
+
+@keyframes wave {
+  to {
+    bottom: 0;
+    opacity: 1;
   }
 }

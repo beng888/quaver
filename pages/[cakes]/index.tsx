@@ -18,7 +18,6 @@ export default function Cakes({ category }: { category: ICategory }) {
           smooth: true,
           breakpoint: 768,
         },
-        smartphone: { smooth: true },
       }}
       watch={[]}
       containerRef={containerRef}

@@ -60,8 +60,18 @@ export default function Home({ data }) {
       >
         <div data-scroll data-scroll-repeat data-scroll-call={"navBG-FALSE"} />
         <div className="ml-[10vw] mt-80 lg:mt-0 w-max z-40">
-          {splitText("CAKE SHOP", "-5vw")}
-          {splitText("HANDCRAFTED", "-5vw")}
+          <p
+            data-scroll
+            data-scroll-class="show-wave"
+            className="wave text-5xl tracking-wide sm:text-8xl lg:text-8xl xl:text-9xl font-serif mb-8"
+          >
+            {splitText("CAKE SHOP")}
+            <br />
+            {splitText("HANDCRAFTED")}
+          </p>
+
+          {/* {splitText("CAKE SHOP", "-5vw")}
+          {splitText("HANDCRAFTED", "-5vw")} */}
 
           <div className="flex justify-between font-sans">
             {variants.map((v, i) => (
