@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useLocomotiveScroll } from "react-locomotive-scroll";
 import useGlobalContext from "@context/index";
 import { splitText } from "@helpers/index";
+import Link from "next/link";
 
 export default function Category({ data }) {
   const { isMobile, navMarker, Darkenfooter, colors } = useGlobalContext();
@@ -19,16 +20,16 @@ export default function Category({ data }) {
   const resizeHandler = () => {
     setWidth(window.innerWidth);
 
-    setTimeout(() => {
-      if (!isMobile && window.innerWidth >= 768) return;
-      if (isMobile && window.innerWidth < 768) return;
-      if (!isMobile && window.innerWidth < 768) {
-        return location.reload();
-      }
-      if (isMobile && window.innerWidth >= 768) {
-        return location.reload();
-      }
-    }, 250);
+    // setTimeout(() => {
+    //   if (!isMobile && window.innerWidth >= 768) return;
+    //   if (isMobile && window.innerWidth < 768) return;
+    //   if (!isMobile && window.innerWidth < 768) {
+    //     return location.reload();
+    //   }
+    //   if (isMobile && window.innerWidth >= 768) {
+    //     return location.reload();
+    //   }
+    // }, 250);
   };
 
   const scrollHandler = () => {
@@ -60,56 +61,56 @@ export default function Category({ data }) {
 
   const slideRef = useRef(null);
 
-  if (isMobile)
-    return (
-      <div className="w-full h-[fit-content]">
-        <div id="start" className="relative h-[80vw] w-[80vw] mx-auto">
-          <Image
-            src={`${data.image.url}`}
-            alt={data.image.fileName}
-            objectFit="contain"
-            layout="responsive"
-            height={500}
-            width={500}
-          />
-        </div>
+  // if (isMobile)
+  //   return (
+  //     <div className="w-full h-[fit-content]">
+  //       <div id="start" className="relative h-[80vw] w-[80vw] mx-auto">
+  //         <Image
+  //           src={`${data.image.url}`}
+  //           alt={data.image.fileName}
+  //           objectFit="contain"
+  //           layout="responsive"
+  //           height={500}
+  //           width={500}
+  //         />
+  //       </div>
 
-        <p
-          data-scroll
-          data-scroll-class="show-wave"
-          className="wave text-center capitalize text-7xl tracking-wide sm:text-8xl lg:text-8xl xl:text-9xl font-serif mb-8"
-          style={{ color: color, textShadow: "1px 1px 3px rgba(0,0,0,0.6)" }}
-        >
-          {splitText(data?.title)}
-        </p>
+  //       <p
+  //         data-scroll
+  //         data-scroll-class="show-wave"
+  //         className="wave text-center capitalize text-7xl tracking-wide sm:text-8xl lg:text-8xl xl:text-9xl font-serif mb-8"
+  //         style={{ color: color, textShadow: "1px 1px 3px rgba(0,0,0,0.6)" }}
+  //       >
+  //         {splitText(data?.title)}
+  //       </p>
 
-        <div id="cakes" className="grid place-content-center gap-12 my-24">
-          {data?.cakes?.map((c, i) => (
-            <div key={c.images[0].fileName} className="relative w-96 h-96">
-              <Image
-                layout="fill"
-                src={c.images[0].url}
-                alt={c.images[0].fileName}
-              />
-              <div className="absolute font-mono h-[fit] text-center bg-secondary/70 text-white text-2xl bottom-0 w-full">
-                {c.title}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    );
+  //       <div id="cakes" className="grid place-content-center gap-12 my-24">
+  //         {data?.cakes?.map((c, i) => (
+  //           <div key={c.images[0].fileName} className="relative w-96 h-96">
+  //             <Image
+  //               layout="fill"
+  //               src={c.images[0].url}
+  //               alt={c.images[0].fileName}
+  //             />
+  //             <div className="absolute font-mono h-[fit] text-center bg-secondary/70 text-white text-2xl bottom-0 w-full">
+  //               {c.title}
+  //             </div>
+  //           </div>
+  //         ))}
+  //       </div>
+  //     </div>
+  //   );
 
   return (
-    <div className="relative w-[fit-content] h-screen pr-[15vw] mr-[-1px]">
-      <div className="flex gap-[2vw] items-end h-[80%]">
+    <div className="relative w-[fit-content] h-full md:h-screen pr-[15vw] mr-[-1px]">
+      <div className="flex flex-col md:flex-row gap-[2vw] items-center md:items-end h-[80%]">
         <div
           id="start"
           data-scroll
           data-scroll-repeat
           data-scroll-offset="50%,50%"
           data-scroll-call={"start"}
-          className="w-[60vw] flex flex-col justify-center items-center h-full text-5xl capitalize transform translate-y-[10%]"
+          className="w-[60vw] flex flex-col justify-center items-center h-[100vw] md:h-full text-5xl capitalize transform translate-y-[10%]"
           style={{ color: color, textShadow: "2px 2px 5px rgba(0,0,0,0.6)" }}
         >
           <div
@@ -141,7 +142,7 @@ export default function Category({ data }) {
           data-scroll-repeat
           data-scroll-offset="80%,80%"
           data-scroll-call={"cakes"}
-          className="flex gap-x-12 h-full items-end"
+          className="flex flex-col md:flex-row gap-y-24 gap-x-12 h-full items-end"
         >
           <div
             className={`absolute inset-0 bg-black duration-1000 ${
@@ -168,7 +169,7 @@ export default function Category({ data }) {
                 setDarkenfooter(false);
               }}
               id={`cake-${i}`}
-              className={`w-[60vh] duration-500 relative h-[80%] cursor-pointer  ${
+              className={`w-[60vh] duration-500 relative h-[50vw] md:h-[80%] cursor-pointer text-center md:text-left ${
                 isFocused !== null && slide - 1 !== i && "filter brightness-50"
               }  ${slide - 1 === i && "shadow-2xl"}`}
             >
@@ -209,16 +210,21 @@ export default function Category({ data }) {
                   </div>
                 </div>
               ))}
-              <p
-                className={`${slide - 1 === i ? "opacity-100" : "opacity-0"} ${
-                  isFocused === i && "text-white"
-                } duration-500 absolute text-3xl font-sans bottom-0 transform translate-y-full z-40 w-max italic font-medium hover:text-secondary`}
-                style={{
-                  textShadow: isFocused === i && "0px 0px 7px rgba(0,0,0,0.9)",
-                }}
-              >
-                See more...
-              </p>
+              <Link href={`/${data.slug}/${c.slug}`}>
+                <a
+                  className={`${
+                    slide - 1 === i ? "opacity-100" : "opacity-0"
+                  } ${
+                    isFocused === i && "text-white"
+                  } duration-500 absolute text-3xl font-sans bottom-0 transform translate-y-full z-40 w-max italic font-medium hover:text-secondary`}
+                  style={{
+                    textShadow:
+                      isFocused === i && "0px 0px 7px rgba(0,0,0,0.9)",
+                  }}
+                >
+                  See more...
+                </a>
+              </Link>
             </div>
           ))}
         </div>

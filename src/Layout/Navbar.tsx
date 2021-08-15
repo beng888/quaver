@@ -86,7 +86,7 @@ export default function Navbar() {
                 ref={(el) => (refs.current[i] = el)}
                 className={`cursor-pointer ${
                   i === links.length - 1 && "ml-auto"
-                } ${pathname === "/cakes/[slug]" && i === 2 && "invisible"}`}
+                } ${pathname === "/[cakes]" && i === 2 && "hidden"}`}
                 onClick={() => scroll.scrollTo(`#${n.id}`)}
                 style={{ textShadow: "0px 0px 3px rgba(0,0,0,0.8)" }}
               >
@@ -117,7 +117,9 @@ export default function Navbar() {
                   key={n.id}
                   className={`delay-${i * 100} ${
                     navMarker_val === n.id && "text-secondary"
-                  } cursor-pointer transform translate-x-1/2 opacity-0 group-focus:opacity-100 group-focus:translate-x-0 duration-300`}
+                  } cursor-pointer transform translate-x-1/2 opacity-0 group-focus:opacity-100 group-focus:translate-x-0 duration-300 ${
+                    pathname === "/[cakes]" && i === 2 && "hidden"
+                  }`}
                   onClick={() => scroll.scrollTo(`#${n.id}`)}
                 >
                   {n.label}

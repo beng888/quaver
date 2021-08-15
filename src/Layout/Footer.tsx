@@ -45,11 +45,11 @@ export default function Footer({ pathname }) {
       data-scroll-offset="80%"
       data-scroll-call={"contact"}
       className={`${
-        pathname !== "/cakes/[slug]" &&
-        "border-t-4 border-indigo-500 border-opacity-30 bg-[#EBE6F9]"
-      } w-screen min-h-screen text-center `}
+        pathname !== "/[cakes]" ? "py-24" : "py-24 md:py-0"
+      } border-t-4 border-indigo-500 border-opacity-30 bg-[#EBE6F9] w-screen min-h-screen text-center relative`}
     >
       <div
+        id="contact"
         className={`inset-0 absolute bg-black duration-1000 z-30 pointer-events-none ${
           darkenfooter ? "bg-opacity-70" : "bg-opacity-0"
         }`}
@@ -61,7 +61,6 @@ export default function Footer({ pathname }) {
         className="mb-4"
       >
         <svg
-          id="contact"
           viewBox="0 0 370.6 96.3"
           xmlns="http://www.w3.org/2000/svg"
           className="w-full h-24 lg:h-[10vw] p-2"

@@ -114,3 +114,23 @@ textarea {
     opacity: 1;
   }
 }
+
+/* -------------------------------------------------------------------------- */
+/*                                  scrollbar                                 */
+/* -------------------------------------------------------------------------- */
+
+.pink-scroll::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Track */
+.pink-scroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.pink-scroll::-webkit-scrollbar-thumb {
+  background: #e85a8a;
+  border-radius: 10px;
+}

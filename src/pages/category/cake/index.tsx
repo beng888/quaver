@@ -11,7 +11,6 @@ export default function Cake({ data }) {
   const [inView, setInView] = useState(null);
 
   // console.log(data);
-  console.log("%c%s", "color: #ffcc00", inView);
 
   const shuffled = data.category.cakes.sort(() => 0.5 - Math.random());
 
@@ -29,14 +28,15 @@ export default function Cake({ data }) {
 
   return (
     <div className="min-h-screen">
-      <div className="grid grid-cols-2">
+      <div className="grid md:grid-cols-2">
         {/* <div className="fixed h-screen w-screen grid place-content-center pointer-events-none">
           <div className="grid">asd</div>
         </div> */}
         <div
-        // data-scroll
-        // data-scroll-class="show"
-        // className="transform translate-y-[100vh] duration-[1.2s] ease-out"
+          className="flex flex-nowrap w-full h-full md:block max-w-[100vw] relative overflow-x-auto pink-scroll"
+          // data-scroll
+          // data-scroll-class="show"
+          // className="transform translate-y-[100vh] duration-[1.2s] ease-out"
         >
           {data.images.map((v, i) => (
             <div
@@ -46,7 +46,7 @@ export default function Cake({ data }) {
               data-scroll-offset="60%,60%"
               id={`cake-${i}`}
               key={v.fileName}
-              className="relative h-screen"
+              className="relative max-h-screen md-h-screen h-[85vw] min-w-[85vw] md:min-w-full md:w-full border border-red-400"
             >
               <Image
                 src={v.url}
@@ -61,7 +61,7 @@ export default function Cake({ data }) {
           <div
             data-scroll
             data-scroll-sticky
-            className="h-screen grid place-content-center px-8"
+            className="h-[fit-content] md:h-screen grid place-content-center p-8 sticky top-0"
             data-scroll-target="#target"
           >
             <div>
@@ -103,12 +103,17 @@ export default function Cake({ data }) {
         </div>
       </div>
 
-      <div className="h-screen flex flex-col justify-evenly pb-20">
-        <p className="pl-[4vw] text-4xl font-bold">YOU MIGHT ALSO LIKE...</p>
-        <div className="flex items-center text-center justify-evenly h-max">
+      <div className="h-[fit-content] md:h-screen flex flex-col justify-evenly pb-20">
+        <p className="pl-[4vw] text-xl md:text-4xl font-bold py-8">
+          YOU MIGHT ALSO LIKE...
+        </p>
+        <div className="flex flex-nowrap items-center text-center md:justify-evenly h-max overflow-x-auto pink-scroll">
           {shuffled.slice(0, 3).map((v) => (
-            <div key={v.slug} className="relative h-[25vw] w-full">
-              <div className="relative h-full w-full">
+            <div
+              key={v.slug}
+              className="relative md:min-w-0 max-w-[60vw] w-full"
+            >
+              <div className="relative h-full w-full min-h-[60vw] md:min-h-[25vw] md:min-w-0">
                 <Image
                   src={v.images[0]?.url}
                   alt={v.images[0]?.fileName}
@@ -116,8 +121,10 @@ export default function Cake({ data }) {
                   objectFit="contain"
                 />
               </div>
-              <p className="text-xl px-12 mt-3 mb-1">{v.title}</p>
-              <p>from ₱{v.price}.00</p>
+              <div className="my-2 w-full">
+                <p className="text-xl px-12 truncate max-w-full">{v.title}</p>
+                <p>from ₱{v.price}.00</p>
+              </div>
             </div>
           ))}
         </div>
