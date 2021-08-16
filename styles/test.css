@@ -27,6 +27,10 @@ textarea {
   width: 100%;
 }
 
+.svg-shadow svg {
+  filter: drop-shadow(1px 1px 1px rgb(0 0 0 / 0.4));
+}
+
 .path {
   fill: transparent;
 }
@@ -97,6 +101,15 @@ textarea {
   opacity: 1;
 }
 
+.fade span {
+  opacity: 0;
+}
+
+.show-fade span {
+  animation: fade 500ms ease-in-out forwards;
+  animation-delay: var(--delay);
+}
+
 .wave span {
   position: relative;
   opacity: 0;
@@ -111,6 +124,12 @@ textarea {
 @keyframes wave {
   to {
     bottom: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  to {
     opacity: 1;
   }
 }

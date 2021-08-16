@@ -572,9 +572,7 @@ export const cupcake_logo = (color) => (
     id="svg870"
     version="1.1"
     viewBox="-2.5 -2.5 135.25446 160.87677"
-    height="155.87677mm"
-    width="130.25446mm"
-    className="animate-stroke p-12"
+    className="animate-stroke p-12 h-full w-full"
   >
     <g transform="translate(-43.730071,-63.424725)" id="layer1">
       <path
@@ -601,7 +599,7 @@ export const cakeSlice = (
     xmlSpace="preserve"
     className="cursor-pointer"
   >
-    <g fill='currentColor' className="duration-700">
+    <g fill="currentColor" className="duration-700">
       <path
         d="M454.928,237.161l-32.273-89.114c-5.769-15.921-22.479-25.068-38.994-21.332l-51.145,11.539
 c5.249,9.184,8.488,19.664,8.488,30.978c0,34.705-28.228,62.926-62.924,62.926c-34.686,0-62.908-28.221-62.908-62.926

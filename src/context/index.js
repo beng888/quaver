@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useRef } from "react";
 
 const GlobalContext = React.createContext();
 
@@ -11,13 +11,31 @@ export function GlobalContextWrapper({ children }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [darkenfooter, setDarkenfooter] = useState(false);
 
-  useEffect(() => {
-    window.innerWidth > 768 ? setIsMobile(false) : setIsMobile(true);
+  const isMobileRef = useRef(false);
+  const mainContainer = useRef(null);
 
-    window.addEventListener("resize", () => {
-      if (window.innerWidth > 768) return setIsMobile(false);
-      return setIsMobile(true);
-    });
+  const _SetIsMobile = () => {
+    isMobileRef.current = true;
+    setIsMobile(true);
+  };
+
+  const resizeHandler = () => {
+    if (window.innerWidth >= 768 && !isMobileRef.current) return;
+    if (window.innerWidth < 768 && isMobileRef.current) return;
+    if (window.innerWidth < 768 && !isMobileRef.current) return _SetIsMobile();
+    if (window.innerWidth >= 768 && isMobileRef.current) location.reload();
+  };
+
+  useEffect(() => {
+    if (mainContainer?.current?.clientWidth) {
+      mainContainer?.current?.clientWidth > 768
+        ? setIsMobile(false)
+        : setIsMobile(true);
+    }
+  }, [mainContainer]);
+
+  useEffect(() => {
+    window.addEventListener("resize", resizeHandler);
   }, []);
 
   return (
@@ -31,7 +49,7 @@ export function GlobalContextWrapper({ children }) {
         isMobile,
       }}
     >
-      {children}
+      <div ref={mainContainer}>{children}</div>
     </GlobalContext.Provider>
   );
 }

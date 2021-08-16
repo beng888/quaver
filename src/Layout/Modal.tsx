@@ -45,7 +45,7 @@ export default function Modal() {
     >
       <Link href="/">
         <a
-          className={`h-12 w-12 bg-tertiary absolute top-[2vw] right-[2vw] rounded-full cursor-pointer z-50`}
+          className={`h-10 w-10 bg-tertiary absolute top-[2vw] right-[2vw] rounded-full cursor-pointer z-50`}
           onClick={() => {
             SetModalOpen(false);
             setData(null);
@@ -78,17 +78,6 @@ export default function Modal() {
 
           <div className="waving text-center font-black tracking-widest font-serif text-5xl">
             {splitText("Loading...", 200, true)}
-            {/* {Array.from("Loading...").map((v, i) => (
-              <span
-                key={i}
-                style={{
-                  ["--delay" as any]: `${i * 200}ms`,
-                  color: colors[Math.floor(Math.random() * 5)],
-                }}
-              >
-                {v}
-              </span>
-            ))} */}
           </div>
         </div>
       )}
@@ -98,7 +87,7 @@ export default function Modal() {
           !isLoading && OK
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
-        } duration-1000 transform relative z-20 w-full h-[95%]`}
+        } duration-1000 transform relative z-20 w-full h-full md:h-[95%]`}
       >
         {slug && <Carousel data={data} />}
       </div>

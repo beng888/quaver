@@ -78,6 +78,7 @@ export const getCake = async (slug) => {
           url
         }
         category {
+          slug
           cakes {
             slug
             title

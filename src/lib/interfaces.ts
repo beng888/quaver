@@ -29,6 +29,7 @@ export interface ICake {
   description: string;
   images: [{ url: string; fileName: string }];
   category: {
+    slug: string;
     cakes: [
       {
         slug: string;

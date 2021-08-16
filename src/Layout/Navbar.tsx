@@ -6,6 +6,7 @@ import useGlobalContext from "@context/index";
 import { useLocomotiveScroll } from "react-locomotive-scroll";
 import { useEffect, useRef } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function Navbar() {
   const { scroll } = useLocomotiveScroll();
@@ -56,7 +57,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="fixed z-50 w-full">
+    <nav className="fixed z-50 w-screen">
       <div className="h-24 relative w-full flex items-center pb-4 justify-between px-[2vw] font-bold text-xl tracking-wider text-primary gap-24">
         <div
           className={`${
@@ -65,14 +66,16 @@ export default function Navbar() {
         />
 
         <div className="flex items-center w-full justify-between gap-[5vw] z-50">
-          <a href="/" className="relative h-24 w-44">
-            <Image
-              src={logoAlt}
-              alt="logo-alt"
-              layout="fill"
-              objectFit="contain"
-            />
-          </a>
+          <Link href="/">
+            <a className="relative h-24 w-44">
+              <Image
+                src={logoAlt}
+                alt="logo-alt"
+                layout="fill"
+                objectFit="contain"
+              />
+            </a>
+          </Link>
 
           <div
             ref={marker}

@@ -2,6 +2,7 @@ import Home from "@pages/home";
 import { getCategories } from "@lib/data";
 import { GetStaticProps } from "next";
 import { useRef } from "react";
+import useGlobalContext from "@context/index";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import Layout from "@layout/index";
 
@@ -15,13 +16,14 @@ export const getStaticProps: GetStaticProps = async () => {
 
 export default function IndexPage({ data }) {
   const containerRef = useRef(null);
+  const { isMobile } = useGlobalContext();
 
   return (
     <LocomotiveScrollProvider
       options={{
-        smooth: true,
+        smooth: !isMobile && true,
         tablet: {
-          smooth: true,
+          smooth: !isMobile && true,
           breakpoint: 768,
         },
       }}

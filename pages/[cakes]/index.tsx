@@ -2,20 +2,22 @@ import { useRef } from "react";
 import Category from "@pages/category";
 import { getCategories, getCakes } from "@lib/data";
 import { GetStaticProps, GetStaticPaths } from "next";
+import useGlobalContext from "@context/index";
 import { ICategory } from "@lib/interfaces";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import Layout from "@layout/index";
 
 export default function Cakes({ category }: { category: ICategory }) {
   const containerRef = useRef(null);
+  const { isMobile } = useGlobalContext();
 
   return (
     <LocomotiveScrollProvider
       options={{
-        smooth: true,
+        smooth: !isMobile && true,
         direction: "horizontal",
         tablet: {
-          smooth: true,
+          smooth: !isMobile && true,
           breakpoint: 768,
         },
       }}

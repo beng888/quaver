@@ -6,7 +6,9 @@ import Icon from "@lib/icons/index";
 import Link from "next/link";
 
 export default function Carousel({ data }) {
-  const { colors } = useGlobalContext();
+  const { colors, modalOpen } = useGlobalContext();
+
+  const [, SetModalOpen] = modalOpen;
 
   const [slide, setSlide] = useState(0);
   const slides = data?.cakes?.length;
@@ -84,14 +86,17 @@ export default function Carousel({ data }) {
                     </p>
 
                     <Link href={`/${data.slug}/${c.slug}`}>
-                      <a className="w-[fit-content] pointer-events-auto">
+                      <a
+                        className="w-[fit-content] pointer-events-auto"
+                        onClick={() => SetModalOpen(false)}
+                      >
                         <Button cls="w-[fit-content] select-auto">
                           See More
                         </Button>
                       </a>
                     </Link>
                   </div>
-                  <b className="text-sm md:text-base pl-2">
+                  <b className="text-sm md:text-base pl-2 my-1">
                     From ₱ {c.price}.00
                   </b>
                   <div
