@@ -31,8 +31,6 @@ export default function Footer({ pathname }) {
 
     const data = await res.json();
 
-    console.log(data);
-
     setEmailResponse(data);
     setSending(false);
   };
@@ -180,6 +178,7 @@ export default function Footer({ pathname }) {
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d61855.975247821334!2d120.93038341575559!3d14.311522555211136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397d5b87c111e25%3A0xab8cb698f840321f!2sDasmari%C3%B1as%2C%20Cavite%2C%20Pilipinas!5e0!3m2!1sfil!2sus!4v1625898201984!5m2!1sfil!2sus"
             loading="lazy"
             className="h-full w-full"
+            title="our location"
           ></iframe>
         </div>
 

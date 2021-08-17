@@ -19,8 +19,6 @@ export default function Cake({ data }) {
     scroll?.scrollTo("#top");
   }, [data]);
 
-  // console.log(data);
-
   const shuffled = data.category.cakes
     .filter((c) => c.title !== data.title)
     .sort(() => 0.5 - Math.random());

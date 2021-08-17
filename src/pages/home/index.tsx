@@ -70,9 +70,6 @@ export default function Home({ data }) {
             {splitText("HANDCRAFTED")}
           </p>
 
-          {/* {splitText("CAKE SHOP", "-5vw")}
-          {splitText("HANDCRAFTED", "-5vw")} */}
-
           <div className="flex justify-between font-sans">
             {variants.map((v, i) => (
               <div
@@ -141,7 +138,6 @@ export default function Home({ data }) {
                 i % 2 !== 0 && "md:translate-y-full trans"
               } w-full h-64 md:h-full md:w-[40vw] relative max-w-lg transform scale-50 duration-[2s] cursor-pointer group pointer-events-none`}
             >
-              {/* <Link href={`/cakes/${c.slug}`}> */}
               <div className="relative flex items-center justify-center w-full h-full">
                 <Image
                   src={`${c.image.url}`}

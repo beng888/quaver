@@ -6,6 +6,7 @@ import useGlobalContext from "@context/index";
 import { ICategory } from "@lib/interfaces";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import Layout from "@layout/index";
+import Head from "next/head";
 
 export default function Cakes({ category }: { category: ICategory }) {
   const containerRef = useRef(null);
@@ -25,6 +26,19 @@ export default function Cakes({ category }: { category: ICategory }) {
       containerRef={containerRef}
     >
       <main data-scroll-container ref={containerRef}>
+        <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta charSet="utf-8" />
+          <meta name="description" content={category.description}></meta>
+          <meta property="og:title" content={category.title} key="ogtitle" />
+
+          <meta
+            property="og:description"
+            content={category.description}
+            key="ogdesc"
+          />
+          <title>{category.title}</title>
+        </Head>
         <Layout>
           <div data-scroll-section>
             <Category data={category} />

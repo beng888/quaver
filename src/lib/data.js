@@ -34,6 +34,7 @@ export const getCakes = async (slug) => {
         description
         image {
           url
+          fileName
         }
         cakes {
           title

@@ -16,11 +16,6 @@ export default function Category({ data }) {
   const [, SetNavMarker] = navMarker;
   const [, setDarkenfooter] = Darkenfooter;
   const [isFocused, setIsFocused] = useState(null);
-  console.log("%c%s", "color: #bfffc8", slide - 1 === isFocused);
-
-  console.log("%c%s", "color: #cc0088", isFocused);
-
-  console.log("%c%s", "color: #ffcc00", slide);
 
   useEffect(() => {
     if (isMobile && scroll) location.reload();
@@ -56,6 +51,8 @@ export default function Category({ data }) {
   const getRandom = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   };
+
+  console.log(data.image);
 
   const slideRef = useRef(null);
   return (
@@ -113,7 +110,7 @@ export default function Category({ data }) {
             >
               <div
                 ref={slideRef}
-                tabIndex={i}
+                tabIndex={0}
                 onClick={() =>
                   scroll.scrollTo(`#cake-${i}`, {
                     offset: (slideRef?.current?.offsetWidth - width) / 2,
