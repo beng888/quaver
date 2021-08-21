@@ -63,7 +63,7 @@ export default function Home({ data }) {
           <p
             data-scroll
             data-scroll-class="show-wave"
-            className="wave text-4xl tracking-wide sm:text-8xl lg:text-8xl xl:text-9xl font-serif mb-8"
+            className="wave text-5xl tracking-wide sm:text-6xl lg:text-6xl xl:text-7xl font-serif mb-8"
           >
             {splitText("SWEET TREATS TO")}
             <br />
@@ -80,7 +80,7 @@ export default function Home({ data }) {
               >
                 <Image src={v.img} alt={v.label} />
                 <p
-                  data-scroll
+                  data-scG@roll
                   data-scroll-class="show"
                   className="text-xl duration-200 delay-1000 opacity-0"
                 >
