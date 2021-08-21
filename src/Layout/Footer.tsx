@@ -1,5 +1,5 @@
 import Image from "next/image";
-import ReCAPTCHA from "react-google-recaptcha";
+// import ReCAPTCHA from "react-google-recaptcha";
 import telephone from "@images/telephone.svg";
 import email from "@images/email.svg";
 import facebook from "@images/facebook.svg";
@@ -12,11 +12,11 @@ export default function Footer({ pathname }) {
   const [darkenfooter] = Darkenfooter;
   const [emailResponse, setEmailResponse] = useState(null);
   const [sending, setSending] = useState(false);
-  const reRef = useRef<ReCAPTCHA>();
+  // const reRef = useRef<ReCAPTCHA>();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    reRef.current.reset();
+    // reRef.current.reset();
     setSending(true);
     setEmailResponse(null);
 
@@ -27,11 +27,16 @@ export default function Footer({ pathname }) {
       formData[name] = value;
     });
 
-    const token = await reRef.current.executeAsync();
+    // const token = await reRef.current.executeAsync();
+
+    // const res = await fetch(`/api/mail`, {
+    //   method: "post",
+    //   body: JSON.stringify({ ...formData, token }),
+    // });
 
     const res = await fetch(`/api/mail`, {
       method: "post",
-      body: JSON.stringify({ ...formData, token }),
+      body: JSON.stringify({ ...formData }),
     });
 
     const data = await res.json();
@@ -295,11 +300,11 @@ export default function Footer({ pathname }) {
               </p>
             )}
           </form>
-          <ReCAPTCHA
+          {/* <ReCAPTCHA
             ref={reRef}
             sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
             size="invisible"
-          />
+          /> */}
         </div>
       </div>
 
