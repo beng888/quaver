@@ -63,14 +63,14 @@ export default function Home({ data }) {
           <p
             data-scroll
             data-scroll-class="show-wave"
-            className="wave text-5xl tracking-wide sm:text-8xl lg:text-8xl xl:text-9xl font-serif mb-8"
+            className="wave text-4xl tracking-wide sm:text-8xl lg:text-8xl xl:text-9xl font-serif mb-8"
           >
-            {splitText("CAKE SHOP")}
+            {splitText("SWEET TREATS TO")}
             <br />
-            {splitText("HANDCRAFTED")}
+            {splitText("SATISFY YOUR CRAVINGS")}
           </p>
 
-          <div className="flex justify-between font-sans">
+          {/* <div className="flex justify-between font-sans">
             {variants.map((v, i) => (
               <div
                 key={v.label}
@@ -88,7 +88,7 @@ export default function Home({ data }) {
                 </p>
               </div>
             ))}
-          </div>
+          </div> */}
         </div>
         <svg
           data-name="Layer 1"

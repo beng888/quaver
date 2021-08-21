@@ -6,6 +6,162 @@
 @tailwind utilities;
 @tailwind variants;
 
+* {
+  outline: none;
+  box-sizing: border-box;
+}
+
+.line-clamp {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: normal;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+}
+
+.clamp-3 {
+  -webkit-line-clamp: 3;
+}
+
+.clamp-2 {
+  -webkit-line-clamp: 2;
+}
+
+input,
+textarea {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+  width: 100%;
+}
+
+.svg-shadow svg {
+  filter: drop-shadow(1px 1px 1px rgb(0 0 0 / 0.4));
+}
+
+.path {
+  fill: transparent;
+}
+
+.show-categories {
+  transform: scale(1);
+}
+
+@media only screen and (min-width: 768px) {
+  .show-categories.trans {
+    transform: translateY(100%);
+  }
+}
+
+.show-categories svg {
+  overflow: visible;
+  margin: auto;
+}
+
+.show-categories path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: dash 5s linear forwards 300ms;
+  fill: #f8d9d6;
+  transition: fill 4s ease 500ms;
+}
+
+.show-contact path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: dash 500ms linear forwards 300ms;
+  fill: var(--fill);
+  transition: fill 1000ms ease var(--delay);
+  stroke: var(--fill);
+  animation-delay: var(--delay);
+}
+
+.animate-stroke {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: dash 3s ease-in forwards;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.waving span {
+  animation: waving 1s ease-in-out infinite alternate;
+  animation-delay: var(--delay);
+  position: relative;
+}
+
+@keyframes waving {
+  from {
+    bottom: 0;
+  }
+
+  to {
+    bottom: 15px;
+  }
+}
+
+.show {
+  transform: translate(0) rotate(0) scale(1);
+  opacity: 1;
+}
+
+.fade span {
+  opacity: 0;
+}
+
+.show-fade span {
+  animation: fade 500ms ease-in-out forwards;
+  animation-delay: var(--delay);
+}
+
+.wave span {
+  position: relative;
+  opacity: 0;
+  bottom: -100px;
+}
+
+.show-wave span {
+  animation: wave 500ms ease-in-out forwards;
+  animation-delay: var(--delay);
+}
+
+@keyframes wave {
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  to {
+    opacity: 1;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  scrollbar                                 */
+/* -------------------------------------------------------------------------- */
+
+.pink-scroll::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Track */
+.pink-scroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+.pink-scroll::-webkit-scrollbar-thumb {
+  background: #e85a8a;
+  border-radius: 10px;
+}
+
 /* -------------------------------------------------------------------------- */
 /*                      LOCOMOTIVE SCROLL DEFAULT STYLES                      */
 /* -------------------------------------------------------------------------- */
