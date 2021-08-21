@@ -5,7 +5,7 @@ const handler = async (req, res) => {
   const { name, email, message } = JSON.parse(req.body);
 
   // async function validateHuman(token: string): Promise<boolean> {
-  //   const secret = process.env.RECAPTCHA_SECRET_KEY;
+  //   const secret = process.env.NEXT_PUBLIC_RECAPTCHA_SECRET_KEY;
   //   const response = await fetch(
   //     `https://www.google.com/recaptcha/api/siteverify?secret=${secret}&response=${token}`,
   //     {
@@ -23,8 +23,8 @@ const handler = async (req, res) => {
     port: 465,
     secure: true,
     auth: {
-      user: process.env.EMAIL_USERNAME,
-      pass: process.env.EMAIL_PASSWORD,
+      user: process.env.NEXT_PUBLIC_EMAIL_USERNAME,
+      pass: process.env.NEXT_PUBLIC_EMAIL_PASSWORD,
     },
   });
 
