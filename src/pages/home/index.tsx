@@ -89,6 +89,7 @@ export default function Home({ data }) {
               </div>
             ))}
           </div> */}
+          {/* asfbawfawfaw */}
         </div>
         <svg
           data-name="Layer 1"
