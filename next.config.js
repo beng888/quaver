@@ -1,3 +1,5 @@
+// require("dotenv").config();
+
 module.exports = {
   i18n: {
     locales: ["en"],
@@ -7,6 +9,7 @@ module.exports = {
     domains: ["media.graphcms.com"],
   },
 };
+// env: {},
 
 // module.exports = {
 //   reactStrictMode: true,
