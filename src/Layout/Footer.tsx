@@ -302,7 +302,7 @@ export default function Footer({ pathname }) {
           </form>
           {/* <ReCAPTCHA
             ref={reRef}
-            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+            sitekey={process.env.RECAPTCHA_SITE_KEY}
             size="invisible"
           /> */}
         </div>
