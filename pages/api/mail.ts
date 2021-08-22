@@ -49,13 +49,12 @@ const handler = async (req, res) => {
     });
   } catch (err) {
     console.log(err);
-    res
-      .status(404)
-      .json({
-        errorMessage: "Something went wrong please try again later",
-        user: process.env.EMAIL_USERNAME,
-        pass: process.env.EMAIL_PASSWORD,
-      });
+    res.status(404).json({
+      errorMessage: "Something went wrong please try again later",
+      user: process.env.EMAIL_USERNAME,
+      pass: process.env.EMAIL_PASSWORD,
+      err: { err },
+    });
   }
 };
 
