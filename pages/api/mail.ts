@@ -1,22 +1,22 @@
 import nodemailer from "nodemailer";
 
 const handler = async (req, res) => {
-  // const { name, email, message, token } = JSON.parse(req.body);
-  const { name, email, message } = JSON.parse(req.body);
+  const { name, email, message, token } = JSON.parse(req.body);
+  // const { name, email, message } = JSON.parse(req.body);
 
-  // async function validateHuman(token: string): Promise<boolean> {
-  //   const secret = process.env.NEXT_PUBLIC_RECAPTCHA_SECRET_KEY;
-  //   const response = await fetch(
-  //     `https://www.google.com/recaptcha/api/siteverify?secret=${secret}&response=${token}`,
-  //     {
-  //       method: "POST",
-  //     }
-  //   );
-  //   const data = await response.json();
-  //   return data.success;
-  // }
+  async function validateHuman(token: string): Promise<boolean> {
+    const secret = process.env.RECAPTCHA_SECRET_KEY;
+    const response = await fetch(
+      `https://www.google.com/recaptcha/api/siteverify?secret=${secret}&response=${token}`,
+      {
+        method: "POST",
+      }
+    );
+    const data = await response.json();
+    return data.success;
+  }
 
-  // const human = await validateHuman(token);
+  const human = await validateHuman(token);
 
   const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
@@ -28,10 +28,13 @@ const handler = async (req, res) => {
     },
   });
 
-  // if (!human) {
-  //   res.status(400);
-  //   return res.json({ errorMessage: "Sorry we don't talk to robots :)" });
-  // }
+  if (!human) {
+    res.status(400);
+    return res.json({
+      errorMessage: "Sorry we don't talk to robots :)",
+      loading: false,
+    });
+  }
 
   try {
     const emailRes = await transporter.sendMail({
