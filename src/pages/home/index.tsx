@@ -42,6 +42,8 @@ export default function Home({ data }) {
     if (obj === "contact") SetNavMarker(obj);
   });
 
+  console.log(process.env.NEXT_PUBLIC_RECAPTCHA_SECRET_KEY);
+
   useEffect(() => {
     scroll?.update();
     scroll?.start();
