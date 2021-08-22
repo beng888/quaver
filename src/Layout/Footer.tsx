@@ -201,7 +201,7 @@ export default function Footer({ pathname }) {
             ways.
           </p>
           <div className="flex gap-[10vw] mb-4">
-            <a href="tel:5554280940" title="Call Us!">
+            <a href="tel:+639164477530" title="Call Us!">
               <Image
                 src={telephone}
                 alt="telephone"
@@ -210,7 +210,7 @@ export default function Footer({ pathname }) {
               />
             </a>
             <Image
-              onClick={() => window.open("mailto:lawrenceardosa@gmail.com")}
+              onClick={() => window.open("mailto:quaverst.2020@gmail.com")}
               src={email}
               alt="email"
               height="50px"
@@ -219,7 +219,7 @@ export default function Footer({ pathname }) {
               title="Email Us!"
             />
             <a
-              href="https://www.facebook.com/QuaverSweetTemptations/photos/?ref=page_internal"
+              href="https://www.facebook.com/QuaverSweetTemptations/"
               target="_blank"
               rel="noreferrer"
               title="Visit our Facebook Page!"

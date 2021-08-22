@@ -39,15 +39,15 @@ export default function Navbar() {
 
   const links = [
     {
-      label: "Start",
+      label: "Home",
       id: "start",
     },
     {
-      label: "Our Cakes?",
+      label: "Menus",
       id: "cakes",
     },
     {
-      label: "About Quaver",
+      label: "About Us",
       id: "about",
     },
     {
@@ -111,7 +111,7 @@ export default function Navbar() {
               <g className="fill-current">
                 <rect y="10" width="100" height="15" rx="5"></rect>
                 <rect y="40" width="100" height="15" rx="5"></rect>
-                <rect y="70" width="100" height="15" rx="5"></rect>{" "}
+                <rect y="70" width="100" height="15" rx="5"></rect>
               </g>
             </svg>
             <ul className="whitespace-nowrap grid gap-[3vw] max-h-0 max-w-0 group-focus:max-h-96 group-focus:max-w-max overflow-hidden group-focus:duration-[2s]">

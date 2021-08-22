@@ -1,7 +1,7 @@
 import { GraphQLClient, gql } from "graphql-request";
 
 const endpoint =
-  "https://api-ap-northeast-1.graphcms.com/v2/ckr074wpl39fs01xi6oqa8ka2/master";
+  "https://api-ap-northeast-1.graphcms.com/v2/cksn3mof013gv01yu50g2d1mm/master";
 
 const graphQLClient = new GraphQLClient(endpoint);
 

@@ -9,6 +9,7 @@ import Link from "next/link";
 
 import logo from "@images/logo.png";
 import portrait from "@images/portrait.jpg";
+import about from "@images/about-pic.png";
 // import vegan from "@images/vegan@3x.png";
 // import gluten from "@images/gluten-2@3x.png";
 // import sugar from "@images/sugar@3x.png";
@@ -18,6 +19,7 @@ import { useEffect } from "react";
 
 export default function Home({ data }) {
   const { categories } = data;
+  console.log("%c⧭", "color: #7f7700", categories);
 
   const { scroll } = useLocomotiveScroll();
 
@@ -42,8 +44,6 @@ export default function Home({ data }) {
     if (obj === "contact") SetNavMarker(obj);
   });
 
-  console.log(process.env.NEXT_PUBLIC_RECAPTCHA_SECRET_KEY);
-
   useEffect(() => {
     scroll?.update();
     scroll?.start();
@@ -61,16 +61,23 @@ export default function Home({ data }) {
         className="relative grid content-center h-screen"
       >
         <div data-scroll data-scroll-repeat data-scroll-call={"navBG-FALSE"} />
-        <div className="ml-[10vw] mt-80 lg:mt-0 w-max z-40">
+        <div className="ml-[5vw] mt-80 lg:mt-0 w-max z-40">
           <p
             data-scroll
             data-scroll-class="show-wave"
-            className="wave text-5xl tracking-wide sm:text-6xl lg:text-6xl xl:text-7xl font-serif mb-8"
+            className="wave text-5xl md:text-[7vw] tracking-widest font-serif"
           >
             {splitText("SWEET TREATS TO")}
             <br />
-            {splitText("SATISFY YOUR CRAVINGS")}
+            {splitText("SATISFY YOUR")} <br />
+            {splitText("CRAVINGS")}
           </p>
+
+          {/* <p>
+                The best things in life are Sweet! Quaver Sweet Temptations
+                specializes in delicious desserts for all of the special moments
+                in your life
+              </p> */}
 
           {/* <div className="flex justify-between font-sans">
             {variants.map((v, i) => (
@@ -141,13 +148,15 @@ export default function Home({ data }) {
               } w-full h-64 md:h-full md:w-[40vw] relative max-w-lg transform scale-50 duration-[2s] cursor-pointer group pointer-events-none`}
             >
               <div className="relative flex items-center justify-center w-full h-full">
-                <Image
-                  src={`${c.image.url}`}
-                  alt={c.image.fileName}
-                  objectFit="contain"
-                  layout="fill"
-                  className="duration-1000 ease-out pointer-events-auto group-hover:brightness-50 filter z-0"
-                />
+                {c.image?.url && (
+                  <Image
+                    src={c.image?.url}
+                    alt={c.image?.fileName}
+                    objectFit="contain"
+                    layout="fill"
+                    className="duration-1000 ease-out pointer-events-auto group-hover:brightness-50 filter z-0"
+                  />
+                )}
                 <Link href={`/?slug=${c.slug}`} as={`/${c.slug}`}>
                   <a
                     onClick={() => SetModalOpen(true)}
@@ -176,50 +185,65 @@ export default function Home({ data }) {
         data-scroll-offset="80%, 50%"
         data-scroll-call={"about"}
         id="about"
-        className="h-screen relative "
+        className="min-h-screen relative pb-[5vw]"
       >
-        <div className="absolute inset-0 text-center px-12 lg:text-xl xl:text-2xl grid place-content-center md:flex w-full items-center mb-20">
-          <div className="flex-1">
-            <div
-              className="overflow-hidden grid place-content-center bg-[#FCF2F8] transform  md:-translate-y-1/4"
-              style={{ clipPath: `ellipse(25% 50% at 50% 50%)` }}
-            >
-              <div
-                className="h-[50vw] w-[50vw] md:h-[30vw] md:w-[30vw] relative"
-                style={{ clipPath: `ellipse(35% 45% at 50% 50%)` }}
-              >
-                <Image src={portrait} alt="portrait" layout="fill" />
-              </div>
-            </div>
-          </div>
-          <div className="md:w-1/2 md:-bottom-40 md:relative">
-            <div className="md:transform md:-translate-x-1/4">
-              <p className="text-4xl font-mono mt-12 mb-4">Lorem ipsum</p>
-
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius
-                dignissimos sit nemo, cumque dolorem debitis quas quisquam et
-                quos sequi ullam dolor quae, provident, pariatur accusamus a
-                quaerat error perferendis placeat dolorum expedita quo nihil cum
-                quasi. Perspiciatis necessitatibus alias a vero. Quos, debitis
-                consequuntur est excepturi, iste placeat exercitationem ducimus
-                a, dicta porro fuga repellat quasi repudiandae temporibus.
-              </p>
-            </div>
-          </div>
-        </div>
         <svg
           id="wave"
           viewBox="0 0 1440 490"
           version="1.1"
           xmlns="http://www.w3.org/2000/svg"
-          className="h-screen"
+          className="h-full absolute top-0 z-0"
         >
           <path
             fill="#EBE6F9"
             d="M0,49L60,89.8C120,131,240,212,360,204.2C480,196,600,98,720,49C840,0,960,0,1080,8.2C1200,16,1320,33,1440,32.7C1560,33,1680,16,1800,32.7C1920,49,2040,98,2160,171.5C2280,245,2400,343,2520,343C2640,343,2760,245,2880,187.8C3000,131,3120,114,3240,130.7C3360,147,3480,196,3600,196C3720,196,3840,147,3960,138.8C4080,131,4200,163,4320,179.7C4440,196,4560,196,4680,179.7C4800,163,4920,131,5040,138.8C5160,147,5280,196,5400,253.2C5520,310,5640,376,5760,351.2C5880,327,6000,212,6120,163.3C6240,114,6360,131,6480,114.3C6600,98,6720,49,6840,57.2C6960,65,7080,131,7200,187.8C7320,245,7440,294,7560,261.3C7680,229,7800,114,7920,106.2C8040,98,8160,196,8280,228.7C8400,261,8520,229,8580,212.3L8640,196L8640,490L8580,490C8520,490,8400,490,8280,490C8160,490,8040,490,7920,490C7800,490,7680,490,7560,490C7440,490,7320,490,7200,490C7080,490,6960,490,6840,490C6720,490,6600,490,6480,490C6360,490,6240,490,6120,490C6000,490,5880,490,5760,490C5640,490,5520,490,5400,490C5280,490,5160,490,5040,490C4920,490,4800,490,4680,490C4560,490,4440,490,4320,490C4200,490,4080,490,3960,490C3840,490,3720,490,3600,490C3480,490,3360,490,3240,490C3120,490,3000,490,2880,490C2760,490,2640,490,2520,490C2400,490,2280,490,2160,490C2040,490,1920,490,1800,490C1680,490,1560,490,1440,490C1320,490,1200,490,1080,490C960,490,840,490,720,490C600,490,480,490,360,490C240,490,120,490,60,490L0,490Z"
           ></path>
         </svg>
+        <div className="z-30 h-full px-12 md:px-0 md:text-xl xl:text-2xl grid md:grid-cols-7 w-full">
+          <div
+            className="m-8 md:mx-auto w-[50vw] h-[50vw] md:w-[40vw] md:h-[40vw] max-w-[500px] max-h-[500px] p-4 col-span-3 bg-[#FCF2F8]"
+            style={{ clipPath: `circle(50% at 50% 50%)` }}
+          >
+            <div className="relative h-full w-full">
+              <Image
+                src={about}
+                alt="about-pic"
+                layout="fill"
+                objectFit="contain"
+              />
+              {/* <div
+              className="overflow-hidden grid place-content-center bg-[#FCF2F8] transform  md:-translate-y-1/4"
+              // style={{ clipPath: `ellipse(25% 50% at 50% 50%)` }}
+            >
+              <div
+                className="h-[50vw] w-[50vw] md:h-[30vw] md:w-[30vw] relative"
+                // style={{ clipPath: `ellipse(35% 45% at 50% 50%)` }}
+              >
+                <Image src={about} alt="about-pic" layout="fill" />
+              </div>
+            </div> */}{" "}
+            </div>
+          </div>
+          <div className="h-full md:h-screen w-full relative col-span-4 grid place-content-end pr-[5vw]">
+            <div>
+              <p>
+                Owned, operated and managed by Joyce Lucas and Ej Ampat. This
+                home-based cake shop started out by producing blueberry, mango,
+                oreo and chocomallows cheesecakes. In less than a year, they are
+                now selling different variety of desserts and accepting
+                customize cakes.
+              </p>
+              <br />
+              <p>
+                Quaver Sweet Temptations pleased to offer variety of products,
+                including freshly baked Cupcakes, Cakes, Cookies and
+                Cheesecakes, as well as DIY Cake Kit and Dessert for souvenirs.
+              </p>
+              <br />
+              <p>Grab a bite and enjoy what we have to offer!</p>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
   );
