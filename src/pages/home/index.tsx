@@ -8,11 +8,11 @@ import Image from "next/image";
 import Link from "next/link";
 
 import logo from "@images/logo.png";
-import vegan from "@images/vegan@3x.png";
-import gluten from "@images/gluten-2@3x.png";
-import sugar from "@images/sugar@3x.png";
-import dairy from "@images/dairy@3x.png";
 import portrait from "@images/portrait.jpg";
+// import vegan from "@images/vegan@3x.png";
+// import gluten from "@images/gluten-2@3x.png";
+// import sugar from "@images/sugar@3x.png";
+// import dairy from "@images/dairy@3x.png";
 
 import { useEffect } from "react";
 
@@ -21,12 +21,12 @@ export default function Home({ data }) {
 
   const { scroll } = useLocomotiveScroll();
 
-  const variants = [
-    { img: vegan, label: "vegan" },
-    { img: gluten, label: "gluten" },
-    { img: sugar, label: "sugar" },
-    { img: dairy, label: "dairy" },
-  ];
+  // const variants = [
+  //   { img: vegan, label: "vegan" },
+  //   { img: gluten, label: "gluten" },
+  //   { img: sugar, label: "sugar" },
+  //   { img: dairy, label: "dairy" },
+  // ];
 
   const { navBG, isMobile, navMarker, modalOpen } = useGlobalContext();
   const [ValModalOpen, SetModalOpen] = modalOpen;

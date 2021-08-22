@@ -45,7 +45,7 @@ export default function Footer({ pathname }) {
     const data = await res.json();
 
     setEmailResponse(data);
-    setSending(false);
+    setSending(data.loading);
   };
 
   return (
@@ -264,7 +264,7 @@ export default function Footer({ pathname }) {
             <Button
               disabled={sending || emailResponse?.message}
               cls={`${
-                emailResponse?.message
+                emailResponse?.message === "Message Sent!"
                   ? "bg-green-400"
                   : sending
                   ? "bg-gray-400"
