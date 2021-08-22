@@ -51,7 +51,11 @@ const handler = async (req, res) => {
     console.log(err);
     res
       .status(404)
-      .json({ errorMessage: "Something went wrong please try again later" });
+      .json({
+        errorMessage: "Something went wrong please try again later",
+        user: process.env.EMAIL_USERNAME,
+        pass: process.env.EMAIL_PASSWORD,
+      });
   }
 };
 
