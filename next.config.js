@@ -1,10 +1,3 @@
-// module.exports = {
-//   reactStrictMode: true,
-//   images: {
-//     domains: ["media.graphcms.com"],
-//   },
-// };
-
 module.exports = {
   i18n: {
     locales: ["en"],
@@ -14,3 +7,10 @@ module.exports = {
     domains: ["media.graphcms.com"],
   },
 };
+
+// module.exports = {
+//   reactStrictMode: true,
+//   images: {
+//     domains: ["media.graphcms.com"],
+//   },
+// };
