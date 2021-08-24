@@ -41,10 +41,13 @@ export const getCakes = async (slug) => {
           slug
           description
           id
-          price
+          pricing
           images {
             url
             fileName
+          }
+          gallery {
+            slug
           }
         }
       }
@@ -89,6 +92,36 @@ export const getCake = async (slug) => {
               url
             }
           }
+        }
+      }
+    }
+  `;
+
+  return await graphQLClient.request(query, { slug });
+};
+
+export const getGalleries = async (slug) => {
+  const query = gql`
+    {
+      galleries {
+        slug
+      }
+    }
+  `;
+
+  return await graphQLClient.request(query, { slug });
+};
+
+export const getGallery = async (slug) => {
+  const query = gql`
+    query getGallery($slug: String!) {
+      gallery(where: { slug: $slug }) {
+        title
+        slug
+        pricing
+        images {
+          url
+          fileName
         }
       }
     }

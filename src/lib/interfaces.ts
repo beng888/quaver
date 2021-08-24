@@ -17,7 +17,10 @@ export interface ICategory {
       slug: string;
       description: string;
       id: string;
-      price: number;
+      pricing: string[];
+      gallery?: {
+        slug: string;
+      };
     }
   ];
 }
@@ -34,7 +37,7 @@ export interface ICake {
       {
         slug: string;
         title: string;
-        price: number;
+        pricing: string[];
         images: [
           {
             fileName: string;
@@ -44,4 +47,16 @@ export interface ICake {
       }
     ];
   };
+}
+
+export interface IGallery {
+  title: string;
+  slug: string;
+  pricing: string[];
+  images: [
+    {
+      url: string;
+      fileName: string;
+    }
+  ];
 }

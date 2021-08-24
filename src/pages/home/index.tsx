@@ -19,7 +19,6 @@ import { useEffect } from "react";
 
 export default function Home({ data }) {
   const { categories } = data;
-  console.log("%c⧭", "color: #7f7700", categories);
 
   const { scroll } = useLocomotiveScroll();
 
@@ -40,6 +39,7 @@ export default function Home({ data }) {
     if (obj === "navBG-FALSE" && ValNavBg) SetNavBG(false);
     if (obj === "cakes") SetNavMarker(obj);
     if (obj === "start") SetNavMarker(obj);
+    if (obj === "gallery") SetNavMarker(obj);
     if (obj === "about") SetNavMarker(obj);
     if (obj === "contact") SetNavMarker(obj);
   });
@@ -64,20 +64,14 @@ export default function Home({ data }) {
         <div className="ml-[5vw] mt-80 lg:mt-0 w-max z-40">
           <p
             data-scroll
-            data-scroll-class="show-wave"
-            className="wave text-5xl md:text-[7vw] tracking-widest font-serif"
+            data-scroll-class="show-fade"
+            className="fade text-5xl md:text-[7vw] tracking-widest font-serif"
           >
-            {splitText("SWEET TREATS TO")}
+            {splitText("SWEET TREATS TO", 100, false, true)}
             <br />
-            {splitText("SATISFY YOUR")} <br />
-            {splitText("CRAVINGS")}
+            {splitText("SATISFY YOUR", 100, false, true)} <br />
+            {splitText("CRAVINGS", 100, false, true)}
           </p>
-
-          {/* <p>
-                The best things in life are Sweet! Quaver Sweet Temptations
-                specializes in delicious desserts for all of the special moments
-                in your life
-              </p> */}
 
           {/* <div className="flex justify-between font-sans">
             {variants.map((v, i) => (
@@ -126,10 +120,22 @@ export default function Home({ data }) {
           </div>
         </div>
       </section>
-
+      <p
+        data-scroll
+        data-scroll-class="show-fade"
+        className="text-center mt-36 fade text-4xl px-[5vw] leading-loose"
+      >
+        {splitText(
+          `The best things in life are Sweet! Quaver Sweet Temptations specializes
+        in delicious desserts for all of the special moments in your life`,
+          100,
+          false,
+          true
+        )}
+      </p>
       <section
         id="cakes"
-        className="h-[fit-content] my-64"
+        className="h-[fit-content]  mt-[20vw]  mb-[30vw]"
         data-scroll
         data-scroll-repeat
         data-scroll-offset="80%, 50%"
@@ -167,8 +173,8 @@ export default function Home({ data }) {
                 </Link>
               </div>
 
-              <div className="absolute inset-x-0 pt-4 duration-700 ease-out transform group-hover:-translate-y-full">
-                {cake[c.title]}
+              <div className="absolute w-full max-w-[90%] mx-auto inset-x-0 pt-4 duration-700 ease-out transform group-hover:-translate-y-full">
+                {cake[c?.slug?.replace(/\-/g, "_")]}
               </div>
 
               <p className="mt-10 max-w-md text-center px-4 sm:text-base lg:text-2xl font-medium font-sans h-[20vw] relative transform -translate-x-1/4 opacity-0 ease-out group-hover:opacity-100 group-hover:translate-x-0 duration-1000">
@@ -178,7 +184,6 @@ export default function Home({ data }) {
           ))}
         </div>
       </section>
-
       <section
         data-scroll
         data-scroll-repeat
@@ -225,6 +230,29 @@ export default function Home({ data }) {
             </div>
           </div>
           <div className="h-full md:h-screen w-full relative col-span-4 grid place-content-end pr-[5vw]">
+            <div
+              data-scroll
+              data-scroll-repeat
+              data-scroll-class="show-contact"
+            >
+              <svg
+                viewBox="0 0 419.4 126.75"
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-full h-24 lg:h-[10vw] p-2"
+              >
+                <g
+                  strokeLinecap="round"
+                  fillRule="evenodd"
+                  fill="none"
+                  style={{
+                    strokeWidth: "0.4mm",
+                  }}
+                  className="path"
+                >
+                  {cake.about}
+                </g>
+              </svg>
+            </div>
             <div>
               <p>
                 Owned, operated and managed by Joyce Lucas and Ej Ampat. This
@@ -243,6 +271,39 @@ export default function Home({ data }) {
               <p>Grab a bite and enjoy what we have to offer!</p>
             </div>
           </div>
+        </div>
+      </section>
+      <section
+        data-scroll
+        data-scroll-repeat
+        data-scroll-offset="80%, 50%"
+        data-scroll-call={"gallery"}
+        id="gallery"
+        className="min-h-screen relative bg-[#EBE6F9]"
+      >
+        <div
+          data-scroll
+          data-scroll-repeat
+          data-scroll-class="show-contact"
+          className="mb-4"
+        >
+          <svg
+            viewBox="0 0 419.4 126.75"
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-full h-24 lg:h-[10vw] p-2"
+          >
+            <g
+              strokeLinecap="round"
+              fillRule="evenodd"
+              fill="none"
+              style={{
+                strokeWidth: "0.4mm",
+              }}
+              className="path"
+            >
+              {cake.gallery}
+            </g>
+          </svg>
         </div>
       </section>
     </main>

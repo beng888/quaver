@@ -8,10 +8,12 @@ export default function Layout({ children }) {
   const router = useRouter();
   const { pathname } = router;
 
+  const horizontal = pathname === "/gallery/[slug]" || pathname === "/[cakes]";
+
   return (
     <div
-      className={`${pathname === "/[cakes]" && "md:block"} ${
-        pathname === "/[cakes]" && "md:max-w-max"
+      className={`${horizontal && "md:block"} ${
+        horizontal && "md:max-w-max"
       } min-h-screen max-w-[100vw]  overflow-x-hidden bg-pink-50 flex flex-col `}
     >
       {pathname !== "/[cakes]/[slug]" && <Navbar />}

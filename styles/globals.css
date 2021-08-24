@@ -61,7 +61,7 @@ textarea {
 .show-categories path {
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
-  animation: dash 5s linear forwards 300ms;
+  animation: dash 5s linear forwards 500ms;
   fill: #f8d9d6;
   transition: fill 4s ease 500ms;
 }

@@ -48,6 +48,19 @@ export default function Carousel({ data }) {
     document.addEventListener("mouseup", mouseUpHandler);
   };
 
+  const galleryButton = (c) => (
+    <Link href={`/gallery/${c.slug}`}>
+      <a
+        className="w-[fit-content] pointer-events-auto"
+        onClick={() => SetModalOpen(false)}
+      >
+        <Button cls="w-[fit-content] select-auto bg-tertiary">
+          See Gallery
+        </Button>
+      </a>
+    </Link>
+  );
+
   return (
     <div
       ref={containerRef}
@@ -55,7 +68,7 @@ export default function Carousel({ data }) {
       className="cursor-[grab] w-full h-full"
     >
       <div className="flex flex-col-reverse md:flex-row md:px-6 justify-end relative h-full max-w-6xl mx-auto pointer-events-none select-none">
-        <div className="z-10 relative md:absolute left-0 h-48 md:h-full md:px-4 flex flex-col  md:justify-center w-full md:w-[35%]">
+        <div className="z-10 relative md:absolute left-0 h-60 md:h-full md:px-4 flex flex-col  md:justify-center w-full md:w-[35%]">
           <div className="absolute w-full h-full md:h-[45%] my-auto z-10">
             {data?.cakes?.map((c, i) => (
               <div
@@ -77,28 +90,41 @@ export default function Carousel({ data }) {
                       backgroundColor: colors[BG(i)],
                     }}
                   />
-                  <div className="grid gap-2 md:gap-4 pl-2">
-                    <p className="font-semibold md:text-xl capitalize">
-                      {c.title} {i}
+
+                  <div className="grid pl-2 h-full">
+                    <p className="flex justify-between font-semibold md:text-xl capitalize">
+                      {c.title}
+                      <div className=" md:hidden">
+                        {c.gallery?.slug && galleryButton(c)}
+                      </div>
                     </p>
-                    <p className="line-clamp clamp-2 md:clamp-3 text-sm md:text-base">
+                    <p className="line-clamp clamp-2 text-sm md:text-base h-[fit-content]">
                       {c.description}
                     </p>
 
-                    <Link href={`/${data.slug}/${c.slug}`}>
-                      <a
-                        className="w-[fit-content] pointer-events-auto"
-                        onClick={() => SetModalOpen(false)}
-                      >
-                        <Button cls="w-[fit-content] select-auto">
-                          See More
-                        </Button>
-                      </a>
-                    </Link>
+                    <div className="flex flex-row-reverse md:flex-col justify-between">
+                      <div className="flex flex-col md:flex-row justify-between">
+                        <Link href={`/${data.slug}/${c.slug}`}>
+                          <a
+                            className="w-[fit-content] pointer-events-auto"
+                            onClick={() => SetModalOpen(false)}
+                          >
+                            <Button cls="w-[fit-content] select-auto">
+                              See More
+                            </Button>
+                          </a>
+                        </Link>
+                        <div className="hidden md:block">
+                          {c.gallery?.slug && galleryButton(c)}
+                        </div>
+                      </div>
+                      <div className="grid text-xs pl-2 gap-y-1">
+                        {c.pricing.map((v) => (
+                          <b key={v}>{v}</b>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                  <b className="text-sm md:text-base pl-2 my-1">
-                    From ₱ {c.price}.00
-                  </b>
                   <div
                     className={`${
                       slide === i ? "visible delay-[1s]" : "invisible"

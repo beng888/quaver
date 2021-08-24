@@ -59,11 +59,11 @@ export default function Category({ data }) {
     <div className="relative w-[fit-content] h-full md:h-screen pr-[15vw] mr-[-1px]">
       <div className="flex flex-col md:flex-row gap-[2vw] items-center md:items-end h-[80%]">
         <div
-          id="start"
+          id="cakes"
           data-scroll
           data-scroll-repeat
           data-scroll-offset={!isMobile ? "50%,50%" : "50%,50%"}
-          data-scroll-call={"start"}
+          data-scroll-call={"cakes"}
           className="w-[60vw] flex flex-col justify-center items-center h-[100vw] md:h-full text-5xl capitalize transform translate-y-[10%]"
           style={{ color: color, textShadow: "2px 2px 5px rgba(0,0,0,0.6)" }}
         >
@@ -91,10 +91,10 @@ export default function Category({ data }) {
         </div>
 
         <div
-          id="cakes"
+          // id="cakes"
           data-scroll
           data-scroll-repeat
-          data-scroll-offset="80%,80%"
+          data-scroll-offset="50%,50%"
           data-scroll-call={"cakes"}
           className="flex flex-col w-screen md:w-max md:flex-row gap-y-24 gap-x-12 h-full items-center md:items-end mb-48 md:mb-0"
         >
