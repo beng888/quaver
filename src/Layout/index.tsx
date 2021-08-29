@@ -24,7 +24,10 @@ export default function Layout({ children }) {
 
       {pathname !== "/[cakes]/[slug]" && <Footer pathname={pathname} />}
 
-      <MessengerCustomerChat pageId="150793413803258" appId="293340379212840" />
+      <MessengerCustomerChat
+        pageId="113417067114042"
+        appId="1242799936147703"
+      />
     </div>
   );
 }
