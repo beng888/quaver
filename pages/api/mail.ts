@@ -39,7 +39,7 @@ const handler = async (req, res) => {
   try {
     const emailRes = await transporter.sendMail({
       from: email,
-      to: "lawrenceardosa@gmail.com",
+      to: "quaverst.2020@gmail.com",
       subject: `Message from ${name} through Quaver website`,
       html: `<h1>You have a new message</h1><br/><br/><br/>
       <p><b>Name: </b> ${name}</p><br/>
