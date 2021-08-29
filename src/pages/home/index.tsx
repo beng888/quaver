@@ -18,7 +18,6 @@ import about from "@images/about-pic.png";
 import { useEffect } from "react";
 
 export default function Home({ data, galleries }) {
-  console.log("%c⧭", "color: #9c66cc", galleries);
   const { categories } = data;
 
   const { scroll } = useLocomotiveScroll();

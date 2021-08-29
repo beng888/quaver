@@ -17,7 +17,6 @@ export default function Gallery({ data }) {
   const [slide, setSlide] = useState(0);
   const slideLength = data?.images?.length;
   const dataRef = useRef(data);
-  console.log("%c⧭", "color: #40fff2", slide);
 
   useEffect(() => {
     if (isMobile && scroll) location.reload();

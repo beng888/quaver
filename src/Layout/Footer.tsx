@@ -14,8 +14,6 @@ export default function Footer({ pathname }) {
   const [emailResponse, setEmailResponse] = useState(null);
   const [sending, setSending] = useState(false);
 
-  console.log(emailResponse);
-
   const reRef = useRef<ReCAPTCHA>();
 
   const handleSubmit = async (e) => {

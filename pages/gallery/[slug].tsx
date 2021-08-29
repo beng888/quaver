@@ -46,10 +46,7 @@ export default function GalleryPage({ gallery }: { gallery: IGallery }) {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const slug = params.slug as string;
 
-  console.log(slug);
-
   const data: { gallery: IGallery | null } = await getGallery(slug);
-  console.log(data);
 
   if (!data.gallery) {
     return {

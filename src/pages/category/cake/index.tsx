@@ -9,7 +9,6 @@ import { splitText } from "@helpers/index";
 import Button from "@components/Button";
 
 export default function Cake({ data }) {
-  console.log("%c⧭", "color: #ace2e6", data);
   const { scroll } = useLocomotiveScroll();
   const { colors, ReturnUrl, isMobile } = useGlobalContext();
   const [color] = useState(colors[Math.floor(Math.random() * colors?.length)]);
