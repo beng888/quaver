@@ -56,6 +56,8 @@ const handler = async (req, res) => {
     res.status(404).json({
       errorMessage: "Something went wrong please try again later",
       loading: false,
+      user: process.env.EMAIL_USERNAME,
+      pass: process.env.EMAIL_PASSWORD,
     });
   }
 };

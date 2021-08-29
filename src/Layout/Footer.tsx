@@ -45,6 +45,8 @@ export default function Footer({ pathname }) {
 
     setEmailResponse(data);
     setSending(data.loading);
+
+    console.log(data);
   };
 
   const horizontal = pathname === "/gallery/[slug]" || pathname === "/[cakes]";
