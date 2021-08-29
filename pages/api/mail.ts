@@ -58,6 +58,7 @@ const handler = async (req, res) => {
       loading: false,
       user: process.env.EMAIL_USERNAME,
       pass: process.env.EMAIL_PASSWORD,
+      err: err,
     });
   }
 };
