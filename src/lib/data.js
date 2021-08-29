@@ -73,10 +73,13 @@ export const getCake = async (slug) => {
   const query = gql`
     query getCake($slug: String!) {
       cake(where: { slug: $slug }) {
-        price
+        pricing
         description
         id
         title
+        gallery {
+          slug
+        }
         images {
           fileName
           url
@@ -86,7 +89,7 @@ export const getCake = async (slug) => {
           cakes {
             slug
             title
-            price
+            pricing
             images {
               fileName
               url
@@ -105,6 +108,15 @@ export const getGalleries = async (slug) => {
     {
       galleries {
         slug
+        cake {
+          ... on Cake {
+            title
+            images {
+              fileName
+              url
+            }
+          }
+        }
       }
     }
   `;
@@ -122,6 +134,18 @@ export const getGallery = async (slug) => {
         images {
           url
           fileName
+        }
+        cake {
+          ... on Cake {
+            slug
+            category {
+              image {
+                url
+                fileName
+              }
+              slug
+            }
+          }
         }
       }
     }

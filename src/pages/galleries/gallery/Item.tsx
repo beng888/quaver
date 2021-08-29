@@ -38,7 +38,7 @@ export default function Item({ d, i }) {
       tabIndex={0}
       className={`h-full w-full relative ${gridSpan[i]} min-w-[150px] group cursor-pointer z-0 focus:z-50`}
     >
-      <div className="h-full w-full relative duration-[2s] group-focus:w-[350px] group-focus:h-[350px]">
+      <div className="h-full w-full relative duration-[1.5s] ease-out group-focus:w-[350px] group-focus:h-[350px]">
         <div
           className="h-full w-full relative duration-[2s]"
           style={{

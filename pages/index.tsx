@@ -1,21 +1,23 @@
 import Home from "@pages/home";
-import { getCategories } from "@lib/data";
+import { getCategories, getGalleries } from "@lib/data";
 import { GetStaticProps } from "next";
 import { useRef } from "react";
 import useGlobalContext from "@context/index";
 import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import Layout from "@layout/index";
 import Head from "next/head";
+import { IGalleries } from "@lib/interfaces";
 
 export const getStaticProps: GetStaticProps = async () => {
   const data = await getCategories();
+  const galleries: IGalleries = await getGalleries();
 
   return {
-    props: { data },
+    props: { data, galleries: galleries?.galleries },
   };
 };
 
-export default function IndexPage({ data }) {
+export default function IndexPage({ data, galleries }) {
   const containerRef = useRef(null);
   const { isMobile } = useGlobalContext();
 
@@ -50,7 +52,7 @@ export default function IndexPage({ data }) {
         </Head>
         <Layout>
           <div data-scroll-section>
-            <Home data={data} />
+            <Home data={data} galleries={galleries} />
           </div>
         </Layout>
       </main>

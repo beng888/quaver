@@ -10,6 +10,7 @@ export function GlobalContextWrapper({ children }) {
   const [isMobile, setIsMobile] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [darkenfooter, setDarkenfooter] = useState(false);
+  const [returnUrl, setReturnUrl] = useState("/");
 
   const isMobileRef = useRef(false);
   const mainContainer = useRef(null);
@@ -45,6 +46,7 @@ export function GlobalContextWrapper({ children }) {
         navMarker: [navMarker, setNavMarker],
         modalOpen: [modalOpen, setModalOpen],
         Darkenfooter: [darkenfooter, setDarkenfooter],
+        ReturnUrl: [returnUrl, setReturnUrl],
         colors,
         isMobile,
       }}

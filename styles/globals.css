@@ -61,7 +61,7 @@ textarea {
 .show-categories path {
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
-  animation: dash 5s linear forwards 500ms;
+  animation: dash 7s linear forwards 1s;
   fill: #f8d9d6;
   transition: fill 4s ease 500ms;
 }
@@ -121,7 +121,7 @@ textarea {
 .wave span {
   position: relative;
   opacity: 0;
-  bottom: -100px;
+  bottom: -50px;
 }
 
 .show-wave span {

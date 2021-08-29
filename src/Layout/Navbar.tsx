@@ -7,14 +7,16 @@ import { useLocomotiveScroll } from "react-locomotive-scroll";
 import { useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Icon from "@lib/icons";
 
 export default function Navbar() {
   const { scroll } = useLocomotiveScroll();
-  const { navBG, navMarker } = useGlobalContext();
+  const { navBG, navMarker, ReturnUrl, isMobile } = useGlobalContext();
   const router = useRouter();
   const { pathname } = router;
   const [navBG_val] = navBG;
   const [navMarker_val] = navMarker;
+  const [returnUrl] = ReturnUrl;
 
   const refs = useRef(new Array(3));
   const logoRef = useRef(null);
@@ -34,8 +36,6 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
-    console.log(navMarker_val);
-
     if (navMarker_val === "start") {
       marker.current.style.left = `${logoRef?.current?.offsetLeft}px`;
       marker.current.style.left = `${logoRef?.current?.offsetWidth}px`;
@@ -70,9 +70,41 @@ export default function Navbar() {
     },
   ];
 
+  const path = {
+    "/gallery/[slug]": returnUrl,
+    "/[cakes]/[slug]": returnUrl,
+    "/[cakes]": "/",
+  };
+  const label = {
+    "/gallery/[slug]": "More Info",
+    "/[cakes]/[slug]": (
+      <Icon
+        type="arrow"
+        strokeWidth={10}
+        stroke="currentColor"
+        className="w-8 h-8 md:h-16 md:w-16 bg-white/0 md:hover:bg-white rounded-full duration-200"
+      />
+    ),
+    "/[cakes]": "Home",
+  };
+
+  const getLink = (pathname) => {
+    return (
+      <Link href={path[pathname]}>
+        <a className={`${pathname === "/[cakes]/[slug]" && "ml-auto"} `}>
+          {label[pathname]}
+        </a>
+      </Link>
+    );
+  };
+
   return (
     <nav className="fixed z-50 w-screen">
-      <div className="h-24 relative w-full flex items-center pb-4 justify-between px-[2vw] font-bold text-xl tracking-wider text-primary gap-24">
+      <div
+        className={`${
+          isMobile ? "h-20" : "h-24"
+        } relative w-full flex items-center pb-4 justify-between px-[2vw] font-bold text-xl tracking-wider text-primary gap-24`}
+      >
         <div
           className={`${
             navBG_val ? "opacity-30" : "opacity-0"
@@ -82,7 +114,9 @@ export default function Navbar() {
         <div className="flex items-center w-full justify-between gap-[5vw] z-50">
           <div
             ref={logoRef}
-            className="relative h-24 w-44 cursor-pointer"
+            className={`${
+              isMobile ? "h-12 w-28" : "h-24 w-44"
+            } relative  cursor-pointer`}
             onClick={() =>
               pathname === "/" ? scroll.scrollTo(`#start`) : router.push("/")
             }
@@ -102,20 +136,17 @@ export default function Navbar() {
 
           <ul
             className="w-full gap-[3vw] justify-between hidden md:flex"
-            style={{ textShadow: "0px 0px 3px rgba(0,0,0,0.8)" }}
+            // style={{ textShadow: "0px 0px 3px rgba(0,0,0,0.8)" }}
           >
-            {pathname !== "/" && (
-              <Link href="/">
-                <a>Home</a>
-              </Link>
-            )}
+            {pathname !== "/" && getLink(pathname)}
+
             {links.map((n, i) => (
               <li
                 key={n.id}
                 ref={(el) => (refs.current[i] = el)}
                 className={`cursor-pointer ${
-                  i === links.length - 1 && "ml-auto"
-                } ${
+                  pathname === "/[cakes]/[slug]" && "hidden"
+                } ${i === links.length - 1 && "ml-auto"} ${
                   (horizontal && i === 1 && "hidden") ||
                   (horizontal && i === 2 && "hidden")
                 }`}
@@ -128,13 +159,19 @@ export default function Navbar() {
 
           <div
             tabIndex={0}
-            className="absolute p-3 overflow-hidden duration-700 transform bg-white shadow-lg md:hidden bg-opacity-70 rounded-3xl right-4 group focus:translate-y-24"
+            className={`absolute  p-3 ${
+              pathname === "/[cakes]/[slug]" && "py-1 px-2"
+            } overflow-hidden duration-700 transform bg-white shadow-lg md:hidden bg-opacity-70 rounded-3xl right-4 group focus:translate-y-24`}
           >
+            {pathname === "/[cakes]/[slug]" && getLink(pathname)}
+
             <svg
               viewBox="0 0 100 100"
               width="30"
               height="30"
-              className="ml-auto cursor-pointer group-focus:hidden"
+              className={` ${
+                pathname === "/[cakes]/[slug]" && "hidden"
+              } ml-auto cursor-pointer group-focus:hidden`}
             >
               <g className="fill-current">
                 <rect y="10" width="100" height="15" rx="5"></rect>
@@ -143,11 +180,15 @@ export default function Navbar() {
               </g>
             </svg>
             <ul className="whitespace-nowrap grid gap-[3vw] max-h-0 max-w-0 group-focus:max-h-96 group-focus:max-w-max overflow-hidden group-focus:duration-[2s]">
-              {pathname !== "/" && (
-                <Link href="/">
-                  <a>Home</a>
-                </Link>
+              {horizontal && (
+                <li
+                  className="cursor-pointer transform translate-x-1/2 opacity-0 group-focus:opacity-100 group-focus:translate-x-0 duration-300"
+                  onClick={() => router.push(returnUrl)}
+                >
+                  {label[pathname]}
+                </li>
               )}
+
               {links.map((n, i) => (
                 <li
                   key={n.id}

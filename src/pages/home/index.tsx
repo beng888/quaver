@@ -17,7 +17,8 @@ import about from "@images/about-pic.png";
 
 import { useEffect } from "react";
 
-export default function Home({ data }) {
+export default function Home({ data, galleries }) {
+  console.log("%c⧭", "color: #9c66cc", galleries);
   const { categories } = data;
 
   const { scroll } = useLocomotiveScroll();
@@ -65,33 +66,13 @@ export default function Home({ data }) {
           <p
             data-scroll
             data-scroll-class="show-fade"
-            className="fade text-5xl md:text-[7vw] tracking-widest font-serif"
+            className="fade text-4xl sm:text-5xl md:text-[7vw] tracking-widest font-serif"
           >
             {splitText("SWEET TREATS TO", 100, false, true)}
             <br />
             {splitText("SATISFY YOUR", 100, false, true)} <br />
             {splitText("CRAVINGS", 100, false, true)}
           </p>
-
-          {/* <div className="flex justify-between font-sans">
-            {variants.map((v, i) => (
-              <div
-                key={v.label}
-                data-scroll
-                data-scroll-class="show"
-                className="flex flex-col items-center duration-500 delay-700 transform scale-50 rotate-180 opacity-0"
-              >
-                <Image src={v.img} alt={v.label} />
-                <p
-                  data-scG@roll
-                  data-scroll-class="show"
-                  className="text-xl duration-200 delay-1000 opacity-0"
-                >
-                  {v.label}
-                </p>
-              </div>
-            ))}
-          </div> */}
         </div>
         <svg
           data-name="Layer 1"
@@ -122,16 +103,13 @@ export default function Home({ data }) {
       </section>
       <p
         data-scroll
-        data-scroll-class="show-fade"
-        className="text-center mt-36 fade text-4xl px-[5vw] leading-loose"
+        data-scroll-offset="40%"
+        data-scroll-class="show"
+        className="text-center mt-36 fade text-2xl sm:text-3xl md:leading-[5rem] font-serif md:text-6xl px-[15vw] md:max-w-prose opacity-0 duration-[2s]"
+        // style={{ lineHeight: "5vw" }}
       >
-        {splitText(
-          `The best things in life are Sweet! Quaver Sweet Temptations specializes
-        in delicious desserts for all of the special moments in your life`,
-          100,
-          false,
-          true
-        )}
+        The best things in life are Sweet! Quaver Sweet Temptations specializes
+        in delicious desserts for all of the special moments in your life
       </p>
       <section
         id="cakes"
@@ -190,7 +168,7 @@ export default function Home({ data }) {
         data-scroll-offset="80%, 50%"
         data-scroll-call={"about"}
         id="about"
-        className="min-h-screen relative pb-[5vw]"
+        className="min-h-screen relative pb-[10vw]"
       >
         <svg
           id="wave"
@@ -216,17 +194,6 @@ export default function Home({ data }) {
                 layout="fill"
                 objectFit="contain"
               />
-              {/* <div
-              className="overflow-hidden grid place-content-center bg-[#FCF2F8] transform  md:-translate-y-1/4"
-              // style={{ clipPath: `ellipse(25% 50% at 50% 50%)` }}
-            >
-              <div
-                className="h-[50vw] w-[50vw] md:h-[30vw] md:w-[30vw] relative"
-                // style={{ clipPath: `ellipse(35% 45% at 50% 50%)` }}
-              >
-                <Image src={about} alt="about-pic" layout="fill" />
-              </div>
-            </div> */}{" "}
             </div>
           </div>
           <div className="h-full md:h-screen w-full relative col-span-4 grid place-content-end pr-[5vw]">
@@ -279,7 +246,7 @@ export default function Home({ data }) {
         data-scroll-offset="80%, 50%"
         data-scroll-call={"gallery"}
         id="gallery"
-        className="min-h-screen relative bg-[#EBE6F9]"
+        className="min-h-screen relative bg-[#EBE6F9] flex flex-col justify-evenly"
       >
         <div
           data-scroll
@@ -304,6 +271,30 @@ export default function Home({ data }) {
               {cake.gallery}
             </g>
           </svg>
+        </div>
+
+        <div className="h-full w-full flex justify-around">
+          {galleries?.map((g) => (
+            <Link key={g.slug} href={`/gallery/${g.slug}`}>
+              <a
+                className="w-[30vw] h-[30vw] relative bg-[#3F749D] cursor-pointer"
+                style={{
+                  boxShadow: `0px 0px 15vw 7vw rgba(0,0,0,0.24) inset`,
+                  clipPath: "circle(50% at 50% 50%)",
+                }}
+              >
+                <Image
+                  src={g?.cake?.images[0]?.url}
+                  alt={g?.cake?.images[0]?.fileName}
+                  layout="fill"
+                  className="mix-blend-soft-light"
+                />
+                <p className="text-4xl text-white font-semibold grid place-content-center h-full">
+                  {g?.cake?.title}
+                </p>
+              </a>
+            </Link>
+          ))}
         </div>
       </section>
     </main>

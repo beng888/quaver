@@ -16,7 +16,8 @@ export default function Layout({ children }) {
         horizontal && "md:max-w-max"
       } min-h-screen max-w-[100vw]  overflow-x-hidden bg-pink-50 flex flex-col `}
     >
-      {pathname !== "/[cakes]/[slug]" && <Navbar />}
+      {/* {pathname !== "/[cakes]/[slug]" && <Navbar />} */}
+      <Navbar />
 
       {pathname === "/" && <Modal />}
       {children}

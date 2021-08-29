@@ -10,6 +10,7 @@ import Baking from "@images/baking.gif";
 import Image from "next/image";
 import logo from "@images/logo.png";
 import { cupcake_logo } from "@static/index";
+import Icon from "@lib/icons";
 
 export default function Modal() {
   const { modalOpen, colors } = useGlobalContext();
@@ -51,20 +52,7 @@ export default function Modal() {
             setData(null);
           }}
         >
-          <svg viewBox="0 0 100 100">
-            <path
-              stroke="white"
-              strokeWidth="5px"
-              fill="none"
-              d="M75 75 L25 25"
-            />
-            <path
-              stroke="white"
-              strokeWidth="5px"
-              fill="none"
-              d="M75 25 L25 75"
-            />
-          </svg>
+          <Icon type="close" strokeWidth={5} stroke="white" />
         </a>
       </Link>
 

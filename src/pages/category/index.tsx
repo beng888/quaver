@@ -62,7 +62,7 @@ export default function Category({ data }) {
           id="cakes"
           data-scroll
           data-scroll-repeat
-          data-scroll-offset={!isMobile ? "50%,50%" : "50%,50%"}
+          data-scroll-offset={"50%,50%"}
           data-scroll-call={"cakes"}
           className="w-[60vw] flex flex-col justify-center items-center h-[100vw] md:h-full text-5xl capitalize transform translate-y-[10%]"
           style={{ color: color, textShadow: "2px 2px 5px rgba(0,0,0,0.6)" }}

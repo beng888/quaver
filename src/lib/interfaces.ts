@@ -27,8 +27,11 @@ export interface ICategory {
 
 export interface ICake {
   id: string;
-  price: string;
+  pricing: string;
   title: string;
+  gallery: {
+    slug: string;
+  };
   description: string;
   images: [{ url: string; fileName: string }];
   category: {
@@ -57,6 +60,28 @@ export interface IGallery {
     {
       url: string;
       fileName: string;
+    }
+  ];
+  cake: {
+    slug: string;
+    category: {
+      image: {
+        url: string;
+        fileName: string;
+      };
+      slug: string;
+    };
+  };
+}
+
+export interface IGalleries {
+  galleries: [
+    {
+      slug: string;
+      cake: {
+        title: string;
+        images: [{ fileName: string; url: string }];
+      };
     }
   ];
 }
