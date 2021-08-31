@@ -76,6 +76,15 @@ textarea {
   animation-delay: var(--delay);
 }
 
+.show-contact .gallery-path {
+  transition: all 300ms ease-out;
+  filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.8));
+}
+
+.show-contact .gallery-path:hover {
+  filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.8));
+}
+
 .animate-stroke {
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;

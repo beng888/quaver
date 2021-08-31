@@ -46,7 +46,7 @@ export default function Footer({ pathname }) {
     setEmailResponse(data);
     setSending(data.loading);
 
-    console.log(data);
+    // console.log(data);
   };
 
   const horizontal = pathname === "/gallery/[slug]" || pathname === "/[cakes]";
@@ -60,7 +60,7 @@ export default function Footer({ pathname }) {
       data-scroll-call={"contact"}
       className={`${
         horizontal ? "py-24 md:py-0" : "py-24"
-      } border-t-4 border-indigo-500 border-opacity-30 bg-[#EBE6F9] w-screen min-h-screen text-center relative`}
+      } bg-[#EBE6F9] w-screen min-h-screen text-center relative`}
     >
       <div
         id="contact"

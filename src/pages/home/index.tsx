@@ -10,6 +10,7 @@ import Link from "next/link";
 import logo from "@images/logo.png";
 import portrait from "@images/portrait.jpg";
 import about from "@images/about-pic.png";
+import gallery from "@images/gallery-pic.webp";
 // import vegan from "@images/vegan@3x.png";
 // import gluten from "@images/gluten-2@3x.png";
 // import sugar from "@images/sugar@3x.png";
@@ -108,7 +109,7 @@ export default function Home({ data, galleries }) {
         // style={{ lineHeight: "5vw" }}
       >
         The best things in life are Sweet! Quaver Sweet Temptations specializes
-        in delicious desserts for all of the special moments in your life
+        in delicious desserts for all of the special moments in your life!
       </p>
       <section
         id="cakes"
@@ -245,34 +246,50 @@ export default function Home({ data, galleries }) {
         data-scroll-offset="80%, 50%"
         data-scroll-call={"gallery"}
         id="gallery"
-        className="min-h-screen relative bg-[#EBE6F9] flex flex-col justify-evenly"
+        className="min-h-screen bg-[#EBE6F9] grid content-center relative"
       >
-        <div
-          data-scroll
-          data-scroll-repeat
-          data-scroll-class="show-contact"
-          className="mb-4"
-        >
-          <svg
-            viewBox="0 0 419.4 126.75"
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-24 lg:h-[10vw] p-2"
+        <div className="bg-[#3F749D] h-[70vh] overflow-hidden relative">
+          <div
+            data-scroll
+            data-scroll-repeat
+            data-scroll-class="show-contact"
+            className="inset-0 absolute shadow-inner grid content-center bg-[#EBE6F9] "
           >
-            <g
-              strokeLinecap="round"
-              fillRule="evenodd"
-              fill="none"
-              style={{
-                strokeWidth: "0.4mm",
-              }}
-              className="path"
+            <svg
+              viewBox="0 0 419.4 126.75"
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-full h-24 lg:h-[15vw] p-2 z-30 gallery-path cursor-pointer max-w-3xl mx-auto"
             >
-              {cake.gallery}
-            </g>
-          </svg>
+              <g
+                strokeLinecap="round"
+                fillRule="evenodd"
+                fill="none"
+                style={{
+                  strokeWidth: "0.4mm",
+                }}
+                className="path"
+              >
+                {cake.gallery}
+              </g>
+            </svg>
+          </div>
+          <div
+            data-scroll
+            data-scroll-speed={-7}
+            className="absolute inset-0 h-screen grid content-center z-0 mix-blend-multiply"
+          >
+            <Image
+              src={gallery}
+              alt="gallery picture"
+              height={100}
+              width={100}
+              layout="responsive"
+              objectFit="cover"
+            />
+          </div>
         </div>
 
-        <div className="h-full w-full flex justify-around">
+        {/* <div className="h-full w-full flex justify-around">
           {galleries?.map((g) => (
             <Link key={g.slug} href={`/gallery/${g.slug}`}>
               <a
@@ -294,7 +311,7 @@ export default function Home({ data, galleries }) {
               </a>
             </Link>
           ))}
-        </div>
+        </div> */}
       </section>
     </main>
   );
