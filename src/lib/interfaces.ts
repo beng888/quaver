@@ -78,6 +78,8 @@ export interface IGalleries {
   galleries: [
     {
       slug: string;
+      title: string;
+      images: [{ fileName: string; url: string }];
       cake: {
         title: string;
         images: [{ fileName: string; url: string }];

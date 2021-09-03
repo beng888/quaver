@@ -40,11 +40,13 @@ export default function Item({ d, i }) {
     >
       <div className="h-full w-full relative duration-[1.5s] ease-out group-focus:w-[350px] group-focus:h-[350px]">
         <div
-          className="h-full w-full relative duration-[2s]"
-          style={{
-            clipPath: reveal ? "inset(0% 0% 0% 0%)" : "inset(0% 100% 0% 0%)",
-            transitionTimingFunction: "cubic-bezier(0.77, 0, 0.175, 1)",
-          }}
+          data-scroll
+          data-scroll-class="show-clip-y"
+          className="h-full w-full relative duration-[2s] clip-y"
+          // style={{
+          //   clipPath: reveal ? "inset(0% 0% 0% 0%)" : "inset(0% 100% 0% 0%)",
+          //   transitionTimingFunction: "cubic-bezier(0.77, 0, 0.175, 1)",
+          // }}
         >
           <Image
             src={d.url}

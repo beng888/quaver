@@ -16,6 +16,7 @@ export default function Category({ data }) {
   const [, SetNavMarker] = navMarker;
   const [, setDarkenfooter] = Darkenfooter;
   const [isFocused, setIsFocused] = useState(null);
+  const slideRef = useRef([]);
 
   useEffect(() => {
     if (isMobile && scroll) location.reload();
@@ -25,7 +26,15 @@ export default function Category({ data }) {
     setWidth(window.innerWidth);
   };
 
+  const isFocusedRef = useRef(null);
+
+  useEffect(() => {
+    isFocusedRef.current = isFocused;
+  }, [isFocused]);
+
   const scrollHandler = () => {
+    console.log(slideRef);
+    slideRef.current[isFocusedRef.current]?.blur();
     setIsFocused(null);
     setDarkenfooter(false);
   };
@@ -54,17 +63,16 @@ export default function Category({ data }) {
 
   console.log(data.image);
 
-  const slideRef = useRef(null);
   return (
     <div className="relative w-[fit-content] h-full md:h-screen pr-[15vw] mr-[-1px]">
-      <div className="flex flex-col md:flex-row gap-[2vw] items-center md:items-end h-[80%]">
+      <div className="flex flex-col md:flex-row gap-20 items-center md:items-end h-[90%]">
         <div
           id="cakes"
           data-scroll
           data-scroll-repeat
           data-scroll-offset={"50%,50%"}
           data-scroll-call={"cakes"}
-          className="w-[60vw] flex flex-col justify-center items-center h-[100vw] md:h-full text-5xl capitalize transform translate-y-[10%]"
+          className="w-[60vw] flex flex-col mt-20 md:mt-0 justify-center items-center h-[100vw] md:h-full text-5xl capitalize transform translate-y-[10%]"
           style={{ color: color, textShadow: "2px 2px 5px rgba(0,0,0,0.6)" }}
         >
           <div
@@ -84,7 +92,7 @@ export default function Category({ data }) {
           <p
             data-scroll
             data-scroll-class="show-wave"
-            className="wave text-5xl tracking-wide sm:text-8xl lg:text-8xl xl:text-9xl font-serif mb-8"
+            className="wave whitespace-nowrap text-5xl tracking-wide sm:text-8xl lg:text-8xl xl:text-9xl font-serif mb-10"
           >
             {splitText(data?.title)}
           </p>
@@ -105,70 +113,58 @@ export default function Category({ data }) {
           />
           {data?.cakes?.map((c, i) => (
             <div
+              ref={(el) => (slideRef.current[i] = el)}
+              data-scroll
+              data-scroll-repeat
+              data-scroll-call={i + 1}
+              data-scroll-offset="50%,50%"
+              tabIndex={0}
+              onClick={() =>
+                scroll.scrollTo(`#cake-${i}`, {
+                  offset: (slideRef?.current[0]?.offsetWidth - width) / 2,
+                  duration: 500,
+                })
+              }
+              onFocus={() => {
+                setIsFocused(i);
+                setDarkenfooter(true);
+              }}
+              onBlur={() => {
+                setIsFocused(null);
+                setDarkenfooter(false);
+              }}
+              id={`cake-${i}`}
               key={c.images[0].fileName}
-              className="flex-col flex w-[60vw] md:w-[63vh] h-[60vw] md:h-[80%] max-w-[100vw]"
+              className="flex-col flex w-[70vw] md:w-[63vh] h-[90vw] md:h-[90%] max-w-[100vw] md:pb-12"
             >
               <div
-                ref={slideRef}
-                tabIndex={0}
-                onClick={() =>
-                  scroll.scrollTo(`#cake-${i}`, {
-                    offset: (slideRef?.current?.offsetWidth - width) / 2,
-                    duration: 500,
-                  })
-                }
-                onFocus={() => {
-                  setIsFocused(i);
-                  setDarkenfooter(true);
-                }}
-                onBlur={() => {
-                  setIsFocused(null);
-                  setDarkenfooter(false);
-                }}
-                id={`cake-${i}`}
-                className={` duration-500 h-full w-full relative cursor-pointer ${
+                className={`duration-500 h-full w-full flex flex-col justify-end relative cursor-pointer group ${
                   isFocused !== null &&
                   slide - 1 !== i &&
                   "filter brightness-50"
                 }  ${slide - 1 === i && "shadow-2xl"}`}
               >
                 <Image
-                  data-scroll
-                  data-scroll-repeat
-                  data-scroll-call={i + 1}
-                  data-scroll-offset="50%,50%"
                   layout="fill"
+                  objectFit="cover"
                   src={c.images[0].url}
                   alt={c.images[0].fileName}
                 />
 
-                {c.images.map((i) => {
-                  <div className="h-96 w-96">{i.fileName}</div>;
-                })}
-                {c.images.slice(1).map((img, I) => (
-                  <div
-                    key={img.fileName}
-                    className={`${
-                      isFocused === i && slide - 1 === i && "z-30 opacity-100"
-                    } absolute h-full w-full pointer-events-none flex justify-center opacity-0 items-center duration-[1.5s]`}
-                    style={{
-                      transform:
-                        isFocused === i &&
-                        slide - 1 === i &&
-                        `translate(${getRandom(-50, 50)}%,${getRandom(
-                          -50,
-                          50
-                        )}%)`,
-                    }}
+                <div className="relative pt-4 bg-gradient-to-t via-black/50 from-black/50 text-white p-2 bottom-0 w-full whitespace-normal text-center font-semibold">
+                  <p className="text-3xl mb-2">{c.title}</p>
+                  <p
+                    className={`overflow-hidden duration-[2s] group-hover:max-h-96 h-auto max-h-0 ${
+                      slide - 1 === i ? "" : ""
+                    }`}
                   >
-                    <div
-                      className={`h-[30%] w-[30%] relative duration-[2s]`}
-                      style={{ boxShadow: "5px 5px 5px rgba(0,0,0,0.5)" }}
-                    >
-                      <Image layout="fill" src={img.url} alt={img.fileName} />
-                    </div>
-                  </div>
-                ))}
+                    {c.description}
+                  </p>
+                </div>
+
+                {/* {c.images.map((i) => {
+                  <div className="h-96 w-96 absolute z-40">{i.fileName}</div>;
+                })} */}
               </div>
               <div
                 className={`${slide - 1 === i ? "opacity-100" : "opacity-0"} ${
@@ -208,7 +204,7 @@ export default function Category({ data }) {
           </div>
         ))}
       </div>
-      <div id="target" className="items-center h-[20%] hidden md:flex">
+      <div id="target" className="items-center h-[10%] hidden md:flex">
         <div
           className="w-screen"
           data-scroll

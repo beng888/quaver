@@ -11,6 +11,9 @@ export function GlobalContextWrapper({ children }) {
   const [modalOpen, setModalOpen] = useState(false);
   const [darkenfooter, setDarkenfooter] = useState(false);
   const [returnUrl, setReturnUrl] = useState("/");
+  const [showSlider, setShowSlider] = useState(false);
+  const [sliderImages, setSliderImages] = useState([]);
+  const [slide, setSlide] = useState(0);
 
   const isMobileRef = useRef(false);
   const mainContainer = useRef(null);
@@ -47,6 +50,9 @@ export function GlobalContextWrapper({ children }) {
         modalOpen: [modalOpen, setModalOpen],
         Darkenfooter: [darkenfooter, setDarkenfooter],
         ReturnUrl: [returnUrl, setReturnUrl],
+        ShowSlider: [showSlider, setShowSlider],
+        SliderImages: [sliderImages, setSliderImages],
+        Slide: [slide, setSlide],
         colors,
         isMobile,
       }}

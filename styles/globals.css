@@ -76,14 +76,13 @@ textarea {
   animation-delay: var(--delay);
 }
 
-.show-contact .gallery-path {
-  transition: all 300ms ease-out;
-  filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.8));
+.show-contact .gallery-path path {
+  stroke: lightseagreen;
 }
 
-.show-contact .gallery-path:hover {
-  filter: drop-shadow(2px 2px 8px rgba(0, 0, 0, 0.8));
-}
+/* .show-contact .gallery-path:hover {
+  filter: drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.5));
+} */
 
 .animate-stroke {
   stroke-dasharray: 1000;
@@ -138,6 +137,19 @@ textarea {
   animation-delay: var(--delay);
 }
 
+.clip-y {
+  clip-path: inset(0% 100% 0% 0%);
+  transition-duration: 2s;
+  /* transition: all 2s ease-out 2s; */
+  /* transition-timing-function: "cubic-bezier(0.77, 0, 0.175, 1)"; */
+}
+
+.show-clip-y {
+  transition-duration: 2s;
+  clip-path: inset(0% 0% 0% 0%);
+  /* transition: all 2s ease-out 2s; */
+}
+
 @keyframes wave {
   to {
     bottom: 0;
@@ -151,6 +163,45 @@ textarea {
   }
 }
 
+.slide-button {
+  @apply w-10 cursor-pointer bg-gray-600 bg-opacity-30 md:bg-opacity-100 duration-200 rounded-full p-2 hover:bg-black active:bg-black pointer-events-auto;
+}
+
+/* next/image - Make image fill available space without specifying height or width */
+
+/* .custom-img {
+  object-fit: contain;
+  width: 100% !important;
+  position: relative !important;
+  height: unset !important;
+}
+
+.unset-img {
+  width: 100%;
+}
+.unset-img > div {
+  position: unset !important;
+} */
+
+.custom-img {
+  object-fit: contain;
+  width: 20px !important;
+  position: relative !important;
+
+  /* width: 100% !important;
+  max-width: max-content !important;
+  position: relative !important;
+  height: unset !important;
+  max-height: 100vw !important; */
+}
+
+/* .unset-img {
+  width: 100%;
+}
+.unset-img > div {
+  
+  position: unset !important;
+} */
 /* -------------------------------------------------------------------------- */
 /*                                  scrollbar                                 */
 /* -------------------------------------------------------------------------- */

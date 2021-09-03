@@ -61,6 +61,25 @@ export default function Carousel({ data }) {
     </Link>
   );
 
+  const arrows = (
+    <>
+      <Icon
+        type="arrow"
+        stroke="white"
+        strokeWidth={7}
+        className="w-8 h-8 md:h-full p-0 md:w-16 md:p-3 transform rotate-180 bg-[#B8CAD5]"
+        onClick={() => setSlide(slide > 0 ? slide - 1 : slides - 1)}
+      />
+      <Icon
+        type="arrow"
+        stroke="white"
+        strokeWidth={7}
+        className="w-8 h-8 md:h-full p-0 md:w-16 md:p-3 bg-[#B8CAD5]"
+        onClick={() => setSlide(slide < slides - 1 ? slide + 1 : 0)}
+      />
+    </>
+  );
+
   return (
     <div
       ref={containerRef}
@@ -82,7 +101,7 @@ export default function Carousel({ data }) {
                     slide === i
                       ? "z-10  opacity-100 delay-[1.5s]"
                       : "opacity-0 duration-1000"
-                  }  absolute flex flex-col justify-between w-full h-full p-[2vw] pb-4 text-left bg-white`}
+                  }  absolute transform flex flex-col justify-between w-full h-full p-[2vw] pb-4 text-left bg-white`}
                 >
                   <div
                     className="inset-y-0 absolute w-2 left-0"
@@ -94,15 +113,15 @@ export default function Carousel({ data }) {
                   <div className="grid pl-2 h-full">
                     <p className="flex justify-between font-semibold md:text-xl capitalize">
                       {c.title}
-                      <div className=" md:hidden">
-                        {c.gallery?.slug && galleryButton(c)}
+                      <div className="md:hidden flex gap-2 pointer-events-auto">
+                        {c.gallery?.slug && arrows}
                       </div>
                     </p>
                     <p className="line-clamp clamp-2 text-sm md:text-base h-[fit-content]">
                       {c.description}
                     </p>
 
-                    <div className="flex flex-row-reverse md:flex-col justify-between">
+                    <div className="flex flex-row-reverse md:flex-col w-max md:w-full gap-4">
                       <div className="flex flex-col md:flex-row justify-between">
                         <Link href={`/${data.slug}/${c.slug}`}>
                           <a
@@ -114,9 +133,7 @@ export default function Carousel({ data }) {
                             </Button>
                           </a>
                         </Link>
-                        <div className="hidden md:block">
-                          {c.gallery?.slug && galleryButton(c)}
-                        </div>
+                        <div>{c.gallery?.slug && galleryButton(c)}</div>
                       </div>
                       <div className="grid text-xs pl-2 gap-y-1">
                         {c.pricing.map((v) => (
@@ -128,26 +145,9 @@ export default function Carousel({ data }) {
                   <div
                     className={`${
                       slide === i ? "visible delay-[1s]" : "invisible"
-                    } absolute bottom-0 right-0 flex justify-end text-5xl pointer-events-auto`}
+                    } hidden md:flex absolute bottom-0 right-0 justify-end text-5xl pointer-events-auto`}
                   >
-                    <Icon
-                      type="arrow"
-                      stroke="white"
-                      strokeWidth={7}
-                      className="w-10 md:w-16 md:p-3 transform rotate-180 bg-[#B8CAD5]"
-                      onClick={() =>
-                        setSlide(slide > 0 ? slide - 1 : slides - 1)
-                      }
-                    />
-                    <Icon
-                      type="arrow"
-                      stroke="white"
-                      strokeWidth={7}
-                      className="w-10 md:w-16 md:p-3 bg-[#B8CAD5]"
-                      onClick={() =>
-                        setSlide(slide < slides - 1 ? slide + 1 : 0)
-                      }
-                    />
+                    {arrows}
                   </div>
                 </div>
 
@@ -156,7 +156,7 @@ export default function Carousel({ data }) {
                     slide === i
                       ? "scale-100 duration-1000 ease-out"
                       : "scale-x-0"
-                  } transform absolute inset-0 origin-left z-20 pointer-events-none delay-[700ms]`}
+                  } transform absolute inset-0 origin-left z-20 w-[105%] pointer-events-none delay-[700ms]`}
                 >
                   <div
                     className={`${

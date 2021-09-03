@@ -18,7 +18,7 @@ import gallery from "@images/gallery-pic.webp";
 
 import { useEffect } from "react";
 
-export default function Home({ data, galleries }) {
+export default function Home({ data }) {
   const { categories } = data;
 
   const { scroll } = useLocomotiveScroll();
@@ -113,7 +113,7 @@ export default function Home({ data, galleries }) {
       </p>
       <section
         id="cakes"
-        className="h-[fit-content]  mt-[20vw]  mb-[30vw]"
+        className="h-[fit-content]  my-[20vw] "
         data-scroll
         data-scroll-repeat
         data-scroll-offset="80%, 50%"
@@ -168,7 +168,7 @@ export default function Home({ data, galleries }) {
         data-scroll-offset="80%, 50%"
         data-scroll-call={"about"}
         id="about"
-        className="min-h-screen relative pb-[10vw]"
+        className="min-h-screen relative pb-[5vw]"
       >
         <svg
           id="wave"
@@ -249,30 +249,32 @@ export default function Home({ data, galleries }) {
         className="min-h-screen bg-[#EBE6F9] grid content-center relative"
       >
         <div className="bg-[#3F749D] h-[70vh] overflow-hidden relative">
-          <div
-            data-scroll
-            data-scroll-repeat
-            data-scroll-class="show-contact"
-            className="inset-0 absolute shadow-inner grid content-center bg-[#EBE6F9] "
-          >
-            <svg
-              viewBox="0 0 419.4 126.75"
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-full h-24 lg:h-[15vw] p-2 z-30 gallery-path cursor-pointer max-w-3xl mx-auto"
+          <Link href="/gallery">
+            <a
+              data-scroll
+              data-scroll-repeat
+              data-scroll-class="show-contact"
+              className="inset-0 absolute grid content-center bg-[#EBE6F9] "
             >
-              <g
-                strokeLinecap="round"
-                fillRule="evenodd"
-                fill="none"
-                style={{
-                  strokeWidth: "0.4mm",
-                }}
-                className="path"
+              <svg
+                viewBox="0 0 419.4 126.75"
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-full h-24 lg:h-[15vw] p-2 z-30 duration-500 gallery-path cursor-pointer max-w-3xl mx-auto"
               >
-                {cake.gallery}
-              </g>
-            </svg>
-          </div>
+                <g
+                  strokeLinecap="round"
+                  fillRule="evenodd"
+                  fill="none"
+                  style={{
+                    strokeWidth: "0.4mm",
+                  }}
+                  className="path"
+                >
+                  {cake.gallery}
+                </g>
+              </svg>
+            </a>
+          </Link>
           <div
             data-scroll
             data-scroll-speed={-7}
@@ -288,30 +290,6 @@ export default function Home({ data, galleries }) {
             />
           </div>
         </div>
-
-        {/* <div className="h-full w-full flex justify-around">
-          {galleries?.map((g) => (
-            <Link key={g.slug} href={`/gallery/${g.slug}`}>
-              <a
-                className="w-[30vw] h-[30vw] relative bg-[#3F749D] cursor-pointer"
-                style={{
-                  boxShadow: `0px 0px 15vw 7vw rgba(0,0,0,0.24) inset`,
-                  clipPath: "circle(50% at 50% 50%)",
-                }}
-              >
-                <Image
-                  src={g?.cake?.images[0]?.url}
-                  alt={g?.cake?.images[0]?.fileName}
-                  layout="fill"
-                  className="mix-blend-soft-light"
-                />
-                <p className="text-4xl text-white font-semibold grid place-content-center h-full">
-                  {g?.cake?.title}
-                </p>
-              </a>
-            </Link>
-          ))}
-        </div> */}
       </section>
     </main>
   );

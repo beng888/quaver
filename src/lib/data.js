@@ -108,6 +108,11 @@ export const getGalleries = async (slug) => {
     {
       galleries {
         slug
+        title
+        images {
+          fileName
+          url
+        }
         cake {
           ... on Cake {
             title

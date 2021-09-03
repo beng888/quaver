@@ -73,8 +73,10 @@ export default function Navbar() {
   const path = {
     "/gallery/[slug]": returnUrl,
     "/[cakes]/[slug]": returnUrl,
+    "/gallery": "/",
     "/[cakes]": "/",
   };
+
   const label = {
     "/gallery/[slug]": "More Info",
     "/[cakes]/[slug]": (
@@ -148,7 +150,9 @@ export default function Navbar() {
                   pathname === "/[cakes]/[slug]" && "hidden"
                 } ${i === links.length - 1 && "ml-auto"} ${
                   (horizontal && i === 1 && "hidden") ||
-                  (horizontal && i === 2 && "hidden")
+                  (horizontal && i === 2 && "hidden") ||
+                  (pathname === "/gallery" && i === 0 && "hidden") ||
+                  (pathname === "/gallery" && i === 1 && "hidden")
                 }`}
                 onClick={() => scroll.scrollTo(`#${n.id}`)}
               >
@@ -196,7 +200,9 @@ export default function Navbar() {
                     navMarker_val === n.id && "text-secondary"
                   } cursor-pointer transform translate-x-1/2 opacity-0 group-focus:opacity-100 group-focus:translate-x-0 duration-300 ${
                     (horizontal && i === 1 && "hidden") ||
-                    (horizontal && i === 2 && "hidden")
+                    (horizontal && i === 2 && "hidden") ||
+                    (pathname === "/gallery" && i === 0 && "hidden") ||
+                    (pathname === "/gallery" && i === 1 && "hidden")
                   }`}
                   onClick={() => scroll.scrollTo(`#${n.id}`)}
                 >

@@ -9,27 +9,28 @@ import Icon from "@lib/icons";
 export default function Gallery({ data }) {
   const divRef = useRef(null);
   const containerRef = useRef(null);
-  const { isMobile, navMarker, ReturnUrl } = useGlobalContext();
+  const { isMobile, navMarker, ReturnUrl, ShowSlider, SliderImages, Slide } =
+    useGlobalContext();
   const { scroll } = useLocomotiveScroll();
   const [, setReturnUrl] = ReturnUrl;
   const [, SetNavMarker] = navMarker;
-  const [slider, setSlider] = useState(false);
-  const [slide, setSlide] = useState(0);
-  const slideLength = data?.images?.length;
-  const dataRef = useRef(data);
+  const [, setShowSlider] = ShowSlider;
+  const [, setSliderImages] = SliderImages;
+  const [, setSlide] = Slide;
 
   useEffect(() => {
     if (isMobile && scroll) location.reload();
   }, [isMobile]);
 
   useEffect(() => {
-    divRef.current.style.fontSize = `${
-      document.getElementById("gallery-container")?.clientWidth / 10
-    }px`;
+    // divRef.current.style.fontSize = `${
+    //   document.getElementById("gallery-container")?.clientWidth / 10
+    // }px`;
 
     setTimeout(() => {
+      console.log(document.getElementById("gallery-container")?.clientWidth);
       divRef.current.style.fontSize = `${
-        document.getElementById("gallery-container")?.clientWidth / 10
+        document.getElementById("gallery-container")?.clientWidth / 15
       }px`;
       divRef.current.style.opacity = 1;
     }, 1);
@@ -66,7 +67,7 @@ export default function Gallery({ data }) {
         id="gallery-container"
         className={`${
           isMobile && "hidden"
-        } w-full h-screen flex gap-[4vw] pt-16 overflow-hidden px-[12vw] relative`}
+        } w-full min-w-[100vw] h-screen flex gap-[4vw] pt-16 overflow-hidden px-[12vw] relative`}
       >
         <div
           ref={divRef}
@@ -129,8 +130,9 @@ export default function Gallery({ data }) {
           {data?.images?.map((v, i) => (
             <div
               onClick={() => {
+                setShowSlider(true);
+                setSliderImages(data?.images);
                 setSlide(i);
-                setSlider(true);
               }}
               key={v.fileName}
               className="w-[90%] h-[45vw] sm:h-[30vw] mx-auto relative cursor-pointer"
@@ -139,12 +141,12 @@ export default function Gallery({ data }) {
                 src={v.url}
                 alt={v.fileName}
                 layout="fill"
-                objectFit="contain"
+                objectFit="cover"
               />
             </div>
           ))}
         </div>
-        <div
+        {/* <div
           className={`${
             slider ? "bg-black/50" : "invisible pointer-events-none"
           } duration-1000 inset-0 fixed z-50 flex items-center`}
@@ -192,7 +194,7 @@ export default function Gallery({ data }) {
               />
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
