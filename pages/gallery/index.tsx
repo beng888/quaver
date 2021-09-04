@@ -13,6 +13,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: { galleries },
+    revalidate: 60 * 10,
   };
 };
 

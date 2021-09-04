@@ -62,6 +62,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: { gallery: { ...data.gallery } },
+    revalidate: 60 * 10,
     // revalidate: 60 * 60 * 24,
   };
 };
