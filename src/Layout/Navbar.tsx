@@ -53,7 +53,7 @@ export default function Navbar() {
 
   const links = [
     {
-      label: "Cakes",
+      label: pathname === "/" ? "Menu" : "Cakes",
       id: "cakes",
     },
     {

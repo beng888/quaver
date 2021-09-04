@@ -16,8 +16,6 @@ export default function Cake({ data }) {
 
   const [hoveredImg, setHoveredImg] = useState(null);
 
-  console.log(data);
-
   useEffect(() => {
     scroll?.scrollTo("#top");
   }, [data]);
