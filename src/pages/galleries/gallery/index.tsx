@@ -110,7 +110,7 @@ export default function Gallery({ data }) {
             <p
               data-scroll
               data-scroll-class="show-wave"
-              className="wave text-3xl font-black top-1/4 relative text-white mx-auto max-w-max delay-1000"
+              className="wave text-3xl font-black top-1/4 relative text-center px-4 text-white mx-auto max-w-max delay-1000"
               // style={{ background: "inherit" }}
             >
               {splitText(data?.title)}
