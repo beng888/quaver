@@ -16,6 +16,8 @@ export default function Cake({ data }) {
 
   const [hoveredImg, setHoveredImg] = useState(null);
 
+  console.log(data);
+
   useEffect(() => {
     scroll?.scrollTo("#top");
   }, [data]);
@@ -233,7 +235,7 @@ export default function Cake({ data }) {
                 </div>
                 <div className="my-2 w-full">
                   <p className="text-xl px-12 truncate max-w-full">{v.title}</p>
-                  <p>from ₱{v.price}.00</p>
+                  <p>from ₱{v.pricing?.[0].split("₱")[1]}.00</p>
                 </div>
               </div>
             ))}

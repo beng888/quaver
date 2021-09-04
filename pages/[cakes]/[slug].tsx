@@ -37,6 +37,11 @@ export default function CAKE({ cake }: { cake: ICake }) {
             key="ogdesc"
           />
           <title>{cake.title}</title>
+          <meta
+            property="og:image"
+            content={cake.images?.[0].url}
+            key="ogimage"
+          />
         </Head>
         <Layout>
           <div data-scroll-section>

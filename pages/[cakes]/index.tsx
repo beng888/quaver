@@ -31,13 +31,17 @@ export default function Cakes({ category }: { category: ICategory }) {
           <meta charSet="utf-8" />
           <meta name="description" content={category.description}></meta>
           <meta property="og:title" content={category.title} key="ogtitle" />
-
           <meta
             property="og:description"
             content={category.description}
             key="ogdesc"
           />
           <title>{category.title}</title>
+          <meta
+            property="og:image"
+            content={category.image.url}
+            key="ogimage"
+          />
         </Head>
         <Layout>
           <div data-scroll-section>

@@ -33,7 +33,6 @@ export default function Category({ data }) {
   }, [isFocused]);
 
   const scrollHandler = () => {
-    console.log(slideRef);
     slideRef.current[isFocusedRef.current]?.blur();
     setIsFocused(null);
     setDarkenfooter(false);
@@ -60,8 +59,6 @@ export default function Category({ data }) {
   const getRandom = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   };
-
-  console.log(data.image);
 
   return (
     <div className="relative w-[fit-content] h-full md:h-screen pr-[15vw] mr-[-1px]">

@@ -28,7 +28,6 @@ export default function Gallery({ data }) {
     // }px`;
 
     setTimeout(() => {
-      console.log(document.getElementById("gallery-container")?.clientWidth);
       divRef.current.style.fontSize = `${
         document.getElementById("gallery-container")?.clientWidth / 15
       }px`;

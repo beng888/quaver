@@ -23,7 +23,7 @@ export default function Gallery({ galleries }) {
   const pageTitle = "Quaver Sweet Temptations Gallery Page";
   const description = "Sweet treats to satisfy your cravings.";
   const previewImage =
-    "https://scontent.fmnl6-1.fna.fbcdn.net/v/t1.6435-9/118780784_140037027785379_7124078365707026045_n.png?_nc_cat=107&ccb=1-5&_nc_sid=e3f864&_nc_ohc=Mp8cCxoNLtIAX_6X7Ja&_nc_ht=scontent.fmnl6-1.fna&oh=5e34e88edd4c9d17a3da877349797454&oe=6153A46D";
+    "https://quaver-ph.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fimage%2Fpublic%2Fimages%2Fabout-pic.a5610c8fc527bf7d425c4f13cebe5616.png&w=1920&q=75";
 
   return (
     <LocomotiveScrollProvider
