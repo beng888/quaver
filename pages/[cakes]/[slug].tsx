@@ -66,7 +66,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: { cake: { ...data.cake } },
-    revalidate: 60 * 10,
+    revalidate: 60,
     // revalidate: 60 * 60 * 24,
   };
 };
