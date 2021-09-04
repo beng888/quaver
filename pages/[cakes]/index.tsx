@@ -62,7 +62,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: { category: { ...data.category } },
-    revalidate: 60 * 60 * 24,
+    // revalidate: 60 * 60 * 24,
   };
 };
 

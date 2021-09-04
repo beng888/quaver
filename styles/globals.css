@@ -150,6 +150,11 @@ textarea {
   /* transition: all 2s ease-out 2s; */
 }
 
+.scroll-indicator {
+  animation: scrollIndicate 1s ease-in-out infinite;
+  transform-origin: bottom;
+}
+
 @keyframes wave {
   to {
     bottom: 0;

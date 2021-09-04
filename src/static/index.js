@@ -543,7 +543,7 @@ export const sweetTemptations = (
       id="0"
       vectorEffect="non-scaling-stroke"
       style={{
-        ["--delay"]: "300ms",
+        ["--delay"]: "200ms",
         ["--fill"]: "#D0AEEB",
       }}
     />
@@ -552,7 +552,7 @@ export const sweetTemptations = (
       id="1"
       vectorEffect="non-scaling-stroke"
       style={{
-        ["--delay"]: "600ms",
+        ["--delay"]: "400ms",
         ["--fill"]: "#D0AEEB",
       }}
     />
@@ -561,7 +561,7 @@ export const sweetTemptations = (
       id="2"
       vectorEffect="non-scaling-stroke"
       style={{
-        ["--delay"]: "900ms",
+        ["--delay"]: "600ms",
         ["--fill"]: "#D0AEEB",
       }}
     />
@@ -570,7 +570,7 @@ export const sweetTemptations = (
       id="3"
       vectorEffect="non-scaling-stroke"
       style={{
-        ["--delay"]: "1200ms",
+        ["--delay"]: "800ms",
         ["--fill"]: "#D0AEEB",
       }}
     />
@@ -579,7 +579,7 @@ export const sweetTemptations = (
       id="4"
       vectorEffect="non-scaling-stroke"
       style={{
-        ["--delay"]: "1500ms",
+        ["--delay"]: "1000ms",
         ["--fill"]: "#D0AEEB",
       }}
     />
@@ -588,7 +588,7 @@ export const sweetTemptations = (
       id="6"
       vectorEffect="non-scaling-stroke"
       style={{
-        ["--delay"]: "1800ms",
+        ["--delay"]: "1200ms",
         ["--fill"]: "#D0AEEB",
       }}
     />
@@ -597,7 +597,7 @@ export const sweetTemptations = (
       id="7"
       vectorEffect="non-scaling-stroke"
       style={{
-        ["--delay"]: "2100ms",
+        ["--delay"]: "1400ms",
         ["--fill"]: "#D0AEEB",
       }}
     />
@@ -606,7 +606,7 @@ export const sweetTemptations = (
       id="8"
       vectorEffect="non-scaling-stroke"
       style={{
-        ["--delay"]: "2400ms",
+        ["--delay"]: "1600ms",
         ["--fill"]: "#D0AEEB",
       }}
     />
@@ -615,7 +615,7 @@ export const sweetTemptations = (
       id="9"
       vectorEffect="non-scaling-stroke"
       style={{
-        ["--delay"]: "2700ms",
+        ["--delay"]: "1800ms",
         ["--fill"]: "#D0AEEB",
       }}
     />
@@ -624,7 +624,7 @@ export const sweetTemptations = (
       id="10"
       vectorEffect="non-scaling-stroke"
       style={{
-        ["--delay"]: "3000ms",
+        ["--delay"]: "2000ms",
         ["--fill"]: "#D0AEEB",
       }}
     />
@@ -633,7 +633,7 @@ export const sweetTemptations = (
       id="11"
       vectorEffect="non-scaling-stroke"
       style={{
-        ["--delay"]: "3300ms",
+        ["--delay"]: "2200ms",
         ["--fill"]: "#D0AEEB",
       }}
     />
@@ -642,7 +642,7 @@ export const sweetTemptations = (
       id="12"
       vectorEffect="non-scaling-stroke"
       style={{
-        ["--delay"]: "3600ms",
+        ["--delay"]: "2400ms",
         ["--fill"]: "#D0AEEB",
       }}
     />
@@ -651,7 +651,7 @@ export const sweetTemptations = (
       id="13"
       vectorEffect="non-scaling-stroke"
       style={{
-        ["--delay"]: "3900ms",
+        ["--delay"]: "2600ms",
         ["--fill"]: "#D0AEEB",
       }}
     />
@@ -660,7 +660,7 @@ export const sweetTemptations = (
       id="14"
       vectorEffect="non-scaling-stroke"
       style={{
-        ["--delay"]: "4200ms",
+        ["--delay"]: "2800ms",
         ["--fill"]: "#D0AEEB",
       }}
     />
@@ -669,7 +669,7 @@ export const sweetTemptations = (
       id="15"
       vectorEffect="non-scaling-stroke"
       style={{
-        ["--delay"]: "4500ms",
+        ["--delay"]: "3000ms",
         ["--fill"]: "#D0AEEB",
       }}
     />
@@ -678,7 +678,7 @@ export const sweetTemptations = (
       id="16"
       vectorEffect="non-scaling-stroke"
       style={{
-        ["--delay"]: "4800ms",
+        ["--delay"]: "3200ms",
         ["--fill"]: "#D0AEEB",
       }}
     />

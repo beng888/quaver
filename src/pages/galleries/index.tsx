@@ -4,6 +4,7 @@ import router from "next/router";
 import React, { useEffect } from "react";
 import { useLocomotiveScroll } from "react-locomotive-scroll";
 import { sweetTemptations } from "@static/index";
+import Icon from "@lib/icons";
 
 export default function Galleries(galleries) {
   const { scroll } = useLocomotiveScroll();
@@ -31,7 +32,7 @@ export default function Galleries(galleries) {
         data-scroll
         data-scroll-repeat
         data-scroll-class="show-contact"
-        className="min-h-[75vh] text-9xl flex items-center"
+        className="mt-20 py-[10vw] text-9xl flex flex-col items-center"
       >
         <svg
           viewBox="0 0 911.253 140.401"
@@ -50,11 +51,19 @@ export default function Galleries(galleries) {
             {sweetTemptations}
           </g>
         </svg>
+        <Icon
+          onClick={() => scroll?.scrollTo("#gallery-start")}
+          type="chevron"
+          className="h-8 w-8 transform hidden xl:block rotate-90 animate-pulse text-transparent fill-current"
+          stroke="#765FA5"
+          strokeWidth={15}
+        />
       </div>
+      <div id="gallery-start" />
       {galleries?.galleries.map((g) => (
         <div key={g.slug}>
           <div className="bg-[#765FA5] h-[60vh] overflow-hidden relative">
-            <div className="absolute text-7xl font-black text-white grid place-content-center inset-0 z-40">
+            <div className="absolute text-center text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white grid place-content-center inset-0 z-40">
               <p
                 data-scroll
                 data-scroll-repeat
@@ -68,15 +77,14 @@ export default function Galleries(galleries) {
             <div
               data-scroll
               data-scroll-speed={-7}
-              className="absolute inset-0 h-screen grid content-center z-0 mix-blend-overlay"
+              className="relative h-screen w-screen grid content-center z-0 mix-blend-overlay"
             >
               <Image
                 src={g?.cake?.images?.[0]?.url}
                 alt={g?.cake?.images?.[0]?.fileName}
-                height={100}
-                width={100}
-                layout="responsive"
+                layout="fill"
                 objectFit="cover"
+                objectPosition="center"
               />
             </div>
           </div>

@@ -105,7 +105,7 @@ export default function Home({ data }) {
         data-scroll
         data-scroll-offset="40%"
         data-scroll-class="show"
-        className="text-center mt-36 fade text-2xl sm:text-3xl md:leading-[5rem] font-serif md:text-6xl px-[15vw] md:max-w-prose opacity-0 duration-[2s]"
+        className="text-center mt-36 fade text-2xl sm:text-3xl md:leading-[5rem] font-serif md:text-6xl px-6 md:px-[15vw] md:max-w-prose opacity-0 duration-[2s]"
         // style={{ lineHeight: "5vw" }}
       >
         The best things in life are Sweet! Quaver Sweet Temptations specializes
@@ -168,7 +168,7 @@ export default function Home({ data }) {
         data-scroll-offset="80%, 50%"
         data-scroll-call={"about"}
         id="about"
-        className="min-h-screen relative pb-[5vw]"
+        className="min-h-screen relative pb-[5vw] mt-60"
       >
         <svg
           id="wave"
@@ -182,7 +182,7 @@ export default function Home({ data }) {
             d="M0,49L60,89.8C120,131,240,212,360,204.2C480,196,600,98,720,49C840,0,960,0,1080,8.2C1200,16,1320,33,1440,32.7C1560,33,1680,16,1800,32.7C1920,49,2040,98,2160,171.5C2280,245,2400,343,2520,343C2640,343,2760,245,2880,187.8C3000,131,3120,114,3240,130.7C3360,147,3480,196,3600,196C3720,196,3840,147,3960,138.8C4080,131,4200,163,4320,179.7C4440,196,4560,196,4680,179.7C4800,163,4920,131,5040,138.8C5160,147,5280,196,5400,253.2C5520,310,5640,376,5760,351.2C5880,327,6000,212,6120,163.3C6240,114,6360,131,6480,114.3C6600,98,6720,49,6840,57.2C6960,65,7080,131,7200,187.8C7320,245,7440,294,7560,261.3C7680,229,7800,114,7920,106.2C8040,98,8160,196,8280,228.7C8400,261,8520,229,8580,212.3L8640,196L8640,490L8580,490C8520,490,8400,490,8280,490C8160,490,8040,490,7920,490C7800,490,7680,490,7560,490C7440,490,7320,490,7200,490C7080,490,6960,490,6840,490C6720,490,6600,490,6480,490C6360,490,6240,490,6120,490C6000,490,5880,490,5760,490C5640,490,5520,490,5400,490C5280,490,5160,490,5040,490C4920,490,4800,490,4680,490C4560,490,4440,490,4320,490C4200,490,4080,490,3960,490C3840,490,3720,490,3600,490C3480,490,3360,490,3240,490C3120,490,3000,490,2880,490C2760,490,2640,490,2520,490C2400,490,2280,490,2160,490C2040,490,1920,490,1800,490C1680,490,1560,490,1440,490C1320,490,1200,490,1080,490C960,490,840,490,720,490C600,490,480,490,360,490C240,490,120,490,60,490L0,490Z"
           ></path>
         </svg>
-        <div className="z-30 h-full px-12 md:px-0 md:text-xl xl:text-2xl grid md:grid-cols-7 w-full">
+        <div className="z-30 h-full px-6 md:px-0 md:text-xl xl:text-2xl grid md:grid-cols-7 w-full">
           <div
             className="m-8 md:mx-auto w-[50vw] h-[50vw] md:w-[40vw] md:h-[40vw] max-w-[500px] max-h-[500px] p-4 col-span-3 bg-[#FCF2F8]"
             style={{ clipPath: `circle(50% at 50% 50%)` }}
@@ -248,7 +248,7 @@ export default function Home({ data }) {
         id="gallery"
         className="min-h-screen bg-[#EBE6F9] grid content-center relative"
       >
-        <div className="bg-[#3F749D] h-[70vh] overflow-hidden relative">
+        <div className="bg-[#3F749D] h-[90vh] md:h-[70vh] overflow-hidden relative">
           <Link href="/gallery">
             <a
               data-scroll

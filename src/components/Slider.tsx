@@ -33,7 +33,7 @@ export default function Slider() {
         stroke="ghostwhite"
         strokeWidth={10}
       />
-      <div className="w-full flex h-[fit-content] mt-auto mb-12 md:my-auto justify-between px-[5vw] z-10 pointer-events-none">
+      <div className="w-full flex h-[fit-content] mt-auto mb-12 md:my-auto justify-center gap-12 md:justify-between px-[5vw] z-10 pointer-events-none">
         <Icon
           type="chevron"
           stroke="white"

@@ -50,7 +50,7 @@ export default function Cake({ data }) {
   }, [data, setReturnUrl]);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen mt-20 md:mt-0">
       <div id="top" />
       <div className="grid md:grid-cols-2">
         <div
@@ -83,7 +83,7 @@ export default function Cake({ data }) {
           <div
             data-scroll
             data-scroll-sticky
-            className="h-[fit-content] md:h-screen grid place-content-center p-8 sticky top-0"
+            className="h-[fit-content] md:h-screen flex flex-col justify-center p-8 sticky top-0 md:max-w-[50vw]"
             data-scroll-target="#target"
           >
             <div>
@@ -205,7 +205,7 @@ export default function Cake({ data }) {
           <p className="pl-[4vw] text-xl md:text-4xl font-bold py-8">
             YOU MIGHT ALSO LIKE...
           </p>
-          <div className="flex flex-nowrap items-center text-center md:justify-evenly h-max overflow-x-auto pink-scroll">
+          <div className="flex flex-nowrap items-center justify-center text-center md:justify-evenly h-max overflow-x-auto pink-scroll">
             {recommended?.map((v, i) => (
               <div
                 key={v.slug}
@@ -220,7 +220,9 @@ export default function Cake({ data }) {
                     <a>
                       <Image
                         src={
-                          hoveredImg === i ? v.images[1]?.url : v.images[0]?.url
+                          v.images[1] && hoveredImg === i
+                            ? v.images[1]?.url
+                            : v.images[0]?.url
                         }
                         alt={v.images[0]?.fileName}
                         layout="fill"
