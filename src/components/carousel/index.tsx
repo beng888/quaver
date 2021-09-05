@@ -114,7 +114,8 @@ export default function Carousel({ data }) {
                     <p className="flex justify-between font-semibold md:text-xl capitalize">
                       {c.title}
                       <div className="md:hidden flex gap-2 pointer-events-auto">
-                        {c.gallery?.slug && arrows}
+                        {/* {c.gallery?.slug && arrows} */}
+                        {arrows}
                       </div>
                     </p>
                     <p className="line-clamp clamp-2 text-sm md:text-base h-[fit-content]">
@@ -136,7 +137,7 @@ export default function Carousel({ data }) {
                         <div>{c.gallery?.slug && galleryButton(c)}</div>
                       </div>
                       <div className="grid text-xs pl-2 gap-y-1">
-                        {c.pricing.map((v) => (
+                        {c.pricing.slice(0, 4).map((v) => (
                           <b
                             key={v}
                             className="max-w-[25ch] overflow-ellipsis whitespace-nowrap overflow-hidden"
