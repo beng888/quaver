@@ -24,6 +24,9 @@ export default function Slider() {
 
   const length = sliderImages.length - 1;
 
+  console.log(SliderImages?.[0]?.[0]?.alt);
+  console.log(SliderImages);
+
   return (
     <div className="fixed inset-0 text-4xl flex justify-center text-white z-50">
       <Icon
@@ -84,7 +87,7 @@ export default function Slider() {
               src={img.url}
               alt={img.fileName}
               layout="fill"
-              objectFit="cover"
+              objectFit={`${SliderImages?.[0]?.[0]?.alt ? "contain" : "cover"}`}
               className="z-10"
             />
           </div>
