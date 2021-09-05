@@ -6,7 +6,7 @@ import Icon from "@lib/icons/index";
 import Link from "next/link";
 
 export default function Carousel({ data }) {
-  const { colors, modalOpen } = useGlobalContext();
+  const { colors, modalOpen, isMobile } = useGlobalContext();
 
   const [, SetModalOpen] = modalOpen;
 
@@ -67,14 +67,14 @@ export default function Carousel({ data }) {
         type="arrow"
         stroke="white"
         strokeWidth={7}
-        className="w-8 h-8 md:h-full p-0 md:w-16 md:p-3 transform rotate-180 bg-[#B8CAD5]"
+        className="w-10 h-7 md:h-full p-0 md:w-16 md:p-3 transform rotate-180 bg-[#B8CAD5]"
         onClick={() => setSlide(slide > 0 ? slide - 1 : slides - 1)}
       />
       <Icon
         type="arrow"
         stroke="white"
         strokeWidth={7}
-        className="w-8 h-8 md:h-full p-0 md:w-16 md:p-3 bg-[#B8CAD5]"
+        className="w-10 h-7 md:h-full p-0 md:w-16 md:p-3 bg-[#B8CAD5]"
         onClick={() => setSlide(slide < slides - 1 ? slide + 1 : 0)}
       />
     </>
@@ -101,7 +101,7 @@ export default function Carousel({ data }) {
                     slide === i
                       ? "z-10  opacity-100 delay-[1.5s]"
                       : "opacity-0 duration-1000"
-                  }  absolute transform flex flex-col justify-between w-full h-full p-[2vw] pb-4 text-left bg-white`}
+                  }  absolute transform flex flex-col w-full h-full p-[2vw] pb-4 text-left bg-white`}
                 >
                   <div
                     className="inset-y-0 absolute w-2 left-0"
@@ -122,8 +122,8 @@ export default function Carousel({ data }) {
                       {c.description}
                     </p>
 
-                    <div className="flex flex-row-reverse md:flex-col w-max md:w-full gap-4">
-                      <div className="flex flex-col md:flex-row justify-between">
+                    <div className="flex flex-col-reverse md:gap-4 w-max md:w-full">
+                      <div className="flex gap-4 flex-row justify-between whitespace-nowrap">
                         <Link href={`/${data.slug}/${c.slug}`}>
                           <a
                             className="w-[fit-content] pointer-events-auto"
@@ -136,15 +136,24 @@ export default function Carousel({ data }) {
                         </Link>
                         <div>{c.gallery?.slug && galleryButton(c)}</div>
                       </div>
-                      <div className="grid text-xs pl-2 gap-y-1">
-                        {c.pricing.slice(0, 4).map((v) => (
-                          <b
-                            key={v}
-                            className="max-w-[25ch] overflow-ellipsis whitespace-nowrap overflow-hidden"
-                          >
-                            {v}
-                          </b>
-                        ))}
+                      <div className="grid text-xs pl-2 gap-y-1 my-1">
+                        {isMobile
+                          ? c.pricing.slice(0, 3).map((v) => (
+                              <b
+                                key={v}
+                                className="max-w-[25ch] sm:max-w-full overflow-ellipsis whitespace-nowrap overflow-hidden"
+                              >
+                                {v}
+                              </b>
+                            ))
+                          : c.pricing.map((v) => (
+                              <b
+                                key={v}
+                                className="max-w-[25ch] sm:max-w-full overflow-ellipsis whitespace-nowrap overflow-hidden"
+                              >
+                                {v}
+                              </b>
+                            ))}
                       </div>
                     </div>
                   </div>
