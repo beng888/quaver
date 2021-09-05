@@ -123,7 +123,7 @@ export default function Carousel({ data }) {
                     </p>
 
                     <div className="flex flex-col-reverse md:gap-4 w-max md:w-full">
-                      <div className="flex gap-4 flex-row justify-between whitespace-nowrap">
+                      <div className="flex gap-4 md:gap-2 md:flex-col justify-between whitespace-nowrap">
                         <Link href={`/${data.slug}/${c.slug}`}>
                           <a
                             className="w-[fit-content] pointer-events-auto"

@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import Image from "next/image";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import Modal from "./Modal";
@@ -7,6 +8,7 @@ import dynamic from "next/dynamic";
 import useGlobalContext from "@context/index";
 import { useLocomotiveScroll } from "react-locomotive-scroll";
 import { useEffect } from "react";
+import delivery from "@images/delivery.png";
 
 export default function Layout({ children }) {
   const router = useRouter();
@@ -48,6 +50,12 @@ export default function Layout({ children }) {
       {children}
 
       {pathname !== "/[cakes]/[slug]" && <Footer pathname={pathname} />}
+
+      <div className="fixed left-2 bottom-2">
+        <div className="h-24 w-24 z-50 relative scale-50 transform origin-bottom-left cursor-pointer duration-500 hover:scale-100">
+          <Image src={delivery} alt="delivery" layout="fill" />
+        </div>
+      </div>
 
       <MessengerCustomerChat
         pageId="113417067114042"
