@@ -138,22 +138,8 @@ export default function Carousel({ data }) {
                       </div>
                       <div className="grid text-xs pl-2 gap-y-1 my-1">
                         {isMobile
-                          ? c.pricing.slice(0, 3).map((v) => (
-                              <b
-                                key={v}
-                                className="max-w-[25ch] sm:max-w-full overflow-ellipsis whitespace-nowrap overflow-hidden"
-                              >
-                                {v}
-                              </b>
-                            ))
-                          : c.pricing.map((v) => (
-                              <b
-                                key={v}
-                                className="max-w-[25ch] sm:max-w-full overflow-ellipsis whitespace-nowrap overflow-hidden"
-                              >
-                                {v}
-                              </b>
-                            ))}
+                          ? c.pricing.slice(0, 3).map((v) => <b key={v}>{v}</b>)
+                          : c.pricing.map((v) => <b key={v}>{v} </b>)}
                       </div>
                     </div>
                   </div>
