@@ -137,7 +137,12 @@ export default function Carousel({ data }) {
                       </div>
                       <div className="grid text-xs pl-2 gap-y-1">
                         {c.pricing.map((v) => (
-                          <b key={v}>{v}</b>
+                          <b
+                            key={v}
+                            className="max-w-[25ch] overflow-ellipsis whitespace-nowrap overflow-hidden"
+                          >
+                            {v}
+                          </b>
                         ))}
                       </div>
                     </div>
@@ -239,6 +244,7 @@ export default function Carousel({ data }) {
                     src={c.images[0].url}
                     alt={c.images[0].fileName}
                     layout="fill"
+                    objectFit="contain"
                   />
                 </div>
               ))}
