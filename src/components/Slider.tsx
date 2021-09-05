@@ -4,7 +4,7 @@ import useGlobalContext from "@context/index";
 import Icon from "@lib/icons";
 
 export default function Slider() {
-  const { ShowSlider, SliderImages, Slide } = useGlobalContext();
+  const { ShowSlider, SliderImages, Slide, isMobile } = useGlobalContext();
 
   const [, setShowSlider] = ShowSlider;
   const [sliderImages] = SliderImages;
@@ -81,13 +81,17 @@ export default function Slider() {
             onClick={() => {
               setCurrent(current < length ? current + 1 : 0);
             }}
-            className="relative w-screen max-w-3xl h-full cursor-pointer shadow-2xl"
+            className="relative w-screen max-w-3xl h-full cursor-pointer md:shadow-2xl"
           >
             <Image
               src={img.url}
               alt={img.fileName}
               layout="fill"
-              objectFit={`${SliderImages?.[0]?.[0]?.alt ? "contain" : "cover"}`}
+              objectFit={`${
+                SliderImages?.[0]?.[0]?.alt === "delivery_schedule" || isMobile
+                  ? "contain"
+                  : "cover"
+              }`}
               className="z-10"
             />
           </div>
