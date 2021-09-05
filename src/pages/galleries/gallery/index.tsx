@@ -101,7 +101,7 @@ export default function Gallery({ data }) {
         </div>
       </div>
 
-      <div className={`${!isMobile && "hidden"}`}>
+      <div className={`${!isMobile && "hidden"} pb-20`}>
         <div className="w-screen h-[80vw] mt-24 mb-12 overflow-hidden relative">
           <div
             className="absolute inset-0 z-10 bg-[#3F749D]"
