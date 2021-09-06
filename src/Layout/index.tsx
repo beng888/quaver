@@ -70,7 +70,7 @@ export default function Layout({ children }) {
   const today = new Date(currentDate);
 
   const activeEvent = events?.events?.find(
-    (e) => today > from("2021/09/06") && today < to(e.endingDate)
+    (e) => today > from(e.startingDate) && today < to(e.endingDate)
   );
 
   return (
