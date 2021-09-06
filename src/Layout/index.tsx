@@ -45,9 +45,9 @@ export default function Layout({ children }) {
   useEffect(() => {
     if (showSlider) scroll?.stop();
     if (!showSlider) scroll?.start();
-    if (eventModal) scroll?.stop();
-    if (!eventModal) scroll?.start();
-  }, [showSlider, eventModal]);
+    // if (eventModal) scroll?.stop();
+    // if (!eventModal) scroll?.start();
+  }, [showSlider]);
 
   useEffect(() => {
     if (pathname === "/")
