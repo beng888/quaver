@@ -72,14 +72,14 @@ export default function Layout({ children }) {
   const today = new Date(currentDate);
 
   const activeEvent = events?.events?.find(
-    (e) => today > from("2021/09/06") && today < to(e.endingDate)
+    (e) => today > from(e.startingDate) && today < to(e.endingDate)
   );
 
   return (
     <div
       className={`${horizontal && "md:block"} ${
         horizontal && "md:max-w-max"
-      } min-h-screen max-w-[100vw]  overflow-x-hidden bg-pink-50 flex flex-col `}
+      } min-h-screen max-w-[100vw]  overflow-x-hidden bg-pink-50 flex flex-col`}
     >
       {/* {pathname !== "/[cakes]/[slug]" && <Navbar />} */}
       <Navbar />
