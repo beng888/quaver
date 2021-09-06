@@ -48,19 +48,20 @@ export default function Layout({ children }) {
   }, [showSlider]);
 
   useEffect(() => {
-    (async () => {
-      const events: { event: IEvents | null } = await getEvents();
+    if (pathname === "/")
+      (async () => {
+        const events: { event: IEvents | null } = await getEvents();
 
-      setEvents(events);
+        setEvents(events);
 
-      setTimeout(() => {
-        setEventModal(true);
-      }, 5000);
+        setTimeout(() => {
+          setEventModal(true);
+        }, 5000);
 
-      // return setTimeout(() => {
-      //   setEventModal(false);
-      // }, 15000);
-    })();
+        // return setTimeout(() => {
+        //   setEventModal(false);
+        // }, 15000);
+      })();
   }, []);
 
   const currentDate = new Date().toJSON().slice(0, 10);
