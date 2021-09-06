@@ -45,7 +45,9 @@ export default function Layout({ children }) {
   useEffect(() => {
     if (showSlider) scroll?.stop();
     if (!showSlider) scroll?.start();
-  }, [showSlider]);
+    if (eventModal) scroll?.stop();
+    if (!eventModal) scroll?.start();
+  }, [showSlider, eventModal]);
 
   useEffect(() => {
     if (pathname === "/")
@@ -70,7 +72,7 @@ export default function Layout({ children }) {
   const today = new Date(currentDate);
 
   const activeEvent = events?.events?.find(
-    (e) => today > from(e.startingDate) && today < to(e.endingDate)
+    (e) => today > from("2021/09/06") && today < to(e.endingDate)
   );
 
   return (
@@ -115,19 +117,20 @@ export default function Layout({ children }) {
       {/* activeEvent */}
 
       <div
-        className={`fixed inset-0 w-full h-full flex items-center bg-black/70 z-50 duration-500 ease-out ${
+        onClick={() => setEventModal(false)}
+        className={`fixed inset-0 w-full h-full flex items-center bg-black/70 z-50 duration-500 cursor-pointer ease-out ${
           activeEvent && eventModal
             ? "opacity-100"
             : "pointer-events-none opacity-0"
         }`}
       >
-        <Icon
+        {/* <Icon
           onClick={() => setEventModal(false)}
           type="close"
           className="w-9 h-9 bg-tertiary rounded-full top-[2vw] right-[2vw] fixed cursor-pointer z-40"
           stroke="ghostwhite"
           strokeWidth={10}
-        />
+        /> */}
         <div
           className={`${
             activeEvent && eventModal
