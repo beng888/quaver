@@ -158,3 +158,21 @@ export const getGallery = async (slug) => {
 
   return await graphQLClient.request(query, { slug });
 };
+
+export const getEvents = async () => {
+  const query = gql`
+    query getEvents {
+      events {
+        image {
+          url
+          fileName
+        }
+        eventName
+        endingDate
+        startingDate
+      }
+    }
+  `;
+
+  return await graphQLClient.request(query);
+};

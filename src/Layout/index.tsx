@@ -7,10 +7,13 @@ import MessengerCustomerChat from "react-messenger-customer-chat";
 import dynamic from "next/dynamic";
 import useGlobalContext from "@context/index";
 import { useLocomotiveScroll } from "react-locomotive-scroll";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import delivery from "@images/delivery.png";
 import delivery_schedule from "@images/delivery_schedule.png";
 import order_process from "@images/order_process.png";
+import { getEvents } from "@lib/data";
+import { IEvents } from "@lib/interfaces";
+import Icon from "@lib/icons";
 
 export default function Layout({ children }) {
   const router = useRouter();
@@ -19,6 +22,8 @@ export default function Layout({ children }) {
   const [showSlider, setShowSlider] = ShowSlider;
   const [, setSliderImages] = SliderImages;
   const { scroll } = useLocomotiveScroll();
+  const [events, setEvents] = useState(null);
+  const [eventModal, setEventModal] = useState(false);
 
   const horizontal = pathname === "/gallery/[slug]" || pathname === "/[cakes]";
 
@@ -41,6 +46,31 @@ export default function Layout({ children }) {
     if (showSlider) scroll?.stop();
     if (!showSlider) scroll?.start();
   }, [showSlider]);
+
+  useEffect(() => {
+    (async () => {
+      const events: { event: IEvents | null } = await getEvents();
+
+      setEvents(events);
+
+      setTimeout(() => {
+        setEventModal(true);
+      }, 5000);
+
+      // return setTimeout(() => {
+      //   setEventModal(false);
+      // }, 15000);
+    })();
+  }, []);
+
+  const currentDate = new Date().toJSON().slice(0, 10);
+  const from = (date) => new Date(date);
+  const to = (date) => new Date(date);
+  const today = new Date(currentDate);
+
+  const activeEvent = events?.events?.find(
+    (e) => today > from("2021/09/06") && today < to(e.endingDate)
+  );
 
   return (
     <div
@@ -81,6 +111,39 @@ export default function Layout({ children }) {
         pageId="113417067114042"
         appId="1242799936147703"
       />
+      {/* activeEvent */}
+
+      <div
+        className={`fixed inset-0 w-full h-full flex items-center bg-black/70 z-50 duration-500 ease-out ${
+          activeEvent && eventModal
+            ? "opacity-100"
+            : "pointer-events-none opacity-0"
+        }`}
+      >
+        <Icon
+          onClick={() => setEventModal(false)}
+          type="close"
+          className="w-9 h-9 bg-tertiary rounded-full top-[2vw] right-[2vw] fixed cursor-pointer z-40"
+          stroke="ghostwhite"
+          strokeWidth={10}
+        />
+        <div
+          className={`${
+            activeEvent && eventModal
+              ? "translate-y-0 opacity-100"
+              : "translate-y-1/4 opacity-0"
+          } duration-1000 ease-out transform h-[95%] w-full relative`}
+        >
+          {activeEvent && (
+            <Image
+              src={activeEvent.image.url}
+              alt={activeEvent.image.fileName}
+              layout="fill"
+              objectFit="contain"
+            />
+          )}
+        </div>
+      </div>
     </div>
   );
 }

@@ -87,3 +87,17 @@ export interface IGalleries {
     }
   ];
 }
+
+export interface IEvents {
+  events: [
+    {
+      image: {
+        url: string;
+        fileName: string;
+      };
+      eventName: string;
+      endingDate: string;
+      startingDate: string;
+    }
+  ];
+}
