@@ -88,7 +88,7 @@ export default function Carousel({ data }) {
     >
       <div className="flex flex-col-reverse md:flex-row md:px-6 justify-end relative h-full max-w-6xl mx-auto pointer-events-none select-none">
         <div className="z-10 relative md:absolute left-0 h-60 md:h-full md:px-4 flex flex-col  md:justify-center w-full md:w-[35%]">
-          <div className="absolute w-full h-full md:h-[45%] my-auto z-10">
+          <div className="absolute w-full h-full md:h-[45%] md:min-h-[325px] my-auto z-10">
             {data?.cakes?.map((c, i) => (
               <div
                 key={c.title}
