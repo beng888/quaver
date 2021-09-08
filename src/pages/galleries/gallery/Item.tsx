@@ -13,19 +13,19 @@ export default function Item({ d, i }) {
 
   const gridSpan = {
     0: "row-span-2",
-    1: "row-start-5 col-span-2 row-span-2",
+    1: "row-start-4 col-span-2 row-span-3",
     2: "row-start-2 col-span-2 row-span-2",
     3: "row-start-4 row-span-3",
     4: "row-span-3",
     5: "row-start-4 col-start-4 row-span-2 col-span-2",
     6: "col-start-5 col-span-2 row-span-3",
-    7: "col-start-6 row-start-5 row-span-2",
+    7: "col-start-6 row-start-4 row-span-3",
     8: "col-start-7 row-span-2 col-span-2",
     9: "col-start-7 row-span-4",
     10: "col-start-8 row-span-2",
-    11: "row-span-2 col-span-2",
-    12: "row-start-2 row-span-2 col-span-2",
-    13: "row-span-3 col-span-3",
+    11: "row-start-2 row-span-2 col-span-2",
+    12: "row-span-3 col-span-3",
+    13: "row-span-3 col-span-2",
     14: "row-span-3 col-span-2",
   };
 
@@ -57,11 +57,11 @@ export default function Item({ d, i }) {
         </div>
       </div>
       {/* <p
-    className="text-5xl font-black absolute inset-0 grid place-content-center text-gray-200"
-    style={{ textShadow: "2px 2px 2px rgba(0,0,0,0.9)" }}
-  >
-    {i}
-  </p> */}
+        className="text-5xl font-black absolute inset-0 grid place-content-center text-gray-200"
+        style={{ textShadow: "2px 2px 2px rgba(0,0,0,0.9)" }}
+      >
+        {i}
+      </p> */}
     </div>
   );
 }

@@ -95,7 +95,32 @@ export default function Gallery({ data }) {
           ))}
         </div>
         <div className="grid gap-[4vw] grid-rows-6 grid-flow-col h-[80vh]">
-          {shuffled.slice(43, 70).map((d, i) => (
+          {shuffled.slice(57, 70).map((d, i) => (
+            <Item key={d.fileName} d={d} i={i} />
+          ))}
+        </div>
+        <div className="grid gap-[4vw] grid-rows-6 grid-flow-col h-[80vh]">
+          {shuffled.slice(70, 84).map((d, i) => (
+            <Item key={d.fileName} d={d} i={i} />
+          ))}
+        </div>
+        <div className="grid gap-[4vw] grid-rows-6 grid-flow-col h-[80vh]">
+          {shuffled.slice(84, 98).map((d, i) => (
+            <Item key={d.fileName} d={d} i={i} />
+          ))}
+        </div>
+        <div className="grid gap-[4vw] grid-rows-6 grid-flow-col h-[80vh]">
+          {shuffled.slice(98, 112).map((d, i) => (
+            <Item key={d.fileName} d={d} i={i} />
+          ))}
+        </div>
+        <div className="grid gap-[4vw] grid-rows-6 grid-flow-col h-[80vh]">
+          {shuffled.slice(112, 126).map((d, i) => (
+            <Item key={d.fileName} d={d} i={i} />
+          ))}
+        </div>
+        <div className="grid gap-[4vw] grid-rows-6 grid-flow-col h-[80vh]">
+          {shuffled.slice(126, 140).map((d, i) => (
             <Item key={d.fileName} d={d} i={i} />
           ))}
         </div>
