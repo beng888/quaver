@@ -214,11 +214,7 @@ export default function Footer({ pathname }) {
             )}
           </form>
           <div className="invisible">
-            <ReCAPTCHA
-              ref={reRef}
-              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-              size="invisible"
-            />
+            <ReCAPTCHA ref={reRef} sitekey={"asdadwasd"} size="invisible" />
           </div>
         </div>
       </div>

@@ -34,11 +34,13 @@ export default function Gallery({ data }) {
       divRef.current.style.opacity = 1;
     }, 1);
 
-    setTimeout(() => {
-      containerRef.current.style.maxWidth = `${
-        document.getElementById("gallery-container")?.clientWidth
-      }px`;
-    }, 2000);
+    // setTimeout(() => {
+    //   containerRef.current.style.maxWidth = `${
+    //     document.getElementById("gallery-container")?.clientWidth
+    //   }px`;
+    // }, 2000);
+
+    console.log(document.getElementById("gallery-container")?.clientWidth);
   }, []);
 
   useEffect(() => {
