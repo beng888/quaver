@@ -18,18 +18,22 @@ export default function Cake({ data }) {
 
   useEffect(() => {
     scroll?.scrollTo("#top");
+    scroll?.update();
+    scroll?.start();
   }, [data]);
 
-  const shuffled = data.category.cakes
-    .filter((c) => c.title !== data.title)
-    .sort(() => 0.5 - Math.random());
+  // const shuffled = data.category.cakes
+  //   .filter((c) => c.title !== data.title)
+  //   .sort(() => 0.5 - Math.random());
 
-  const { current: recommended } = useRef(
-    data.category.cakes
-      .filter((c) => c.title !== data.title)
-      .sort(() => 0.5 - Math.random())
-      .slice(0, 3)
-  );
+  const recommendedRef = useRef(null);
+
+  // const recommended = data.category.cakes
+  //   .filter((c) => c.title !== data.title)
+  //   .sort(() => 0.5 - Math.random())
+  //   .slice(0, 3);
+
+  console.log("%c⧭", "color: #ff0000", recommendedRef.current);
 
   useEffect(() => {
     scroll?.on("call", (i) => {
@@ -47,6 +51,10 @@ export default function Cake({ data }) {
 
   useEffect(() => {
     setReturnUrl(`/${data?.category?.slug}`);
+    recommendedRef.current = data.category.cakes
+      .filter((c) => c.title !== data.title)
+      .sort(() => 0.5 - Math.random())
+      .slice(0, 3);
   }, [data, setReturnUrl]);
 
   return (
@@ -55,7 +63,7 @@ export default function Cake({ data }) {
       <div className="grid md:grid-cols-2">
         <div
           className={`${
-            recommended?.length > 0 || (isMobile && "mt-16")
+            recommendedRef.current?.length > 0 || (isMobile && "mt-16")
           } flex flex-nowrap w-full h-full md:block max-w-[100vw] relative overflow-x-auto pink-scroll md:transform md:-translate-x-full opacity-0 duration-[1.5s] ease-out`}
           data-scroll
           data-scroll-class="show"
@@ -200,13 +208,13 @@ export default function Cake({ data }) {
           </div>
         </div>
       </div>
-      {recommended?.length > 0 && (
+      {recommendedRef.current?.length > 0 && (
         <div className="h-[fit-content] md:h-screen flex flex-col justify-evenly pb-20">
           <p className="pl-[4vw] text-xl md:text-4xl font-bold py-8">
             YOU MIGHT ALSO LIKE...
           </p>
           <div className="flex flex-nowrap items-center justify-center text-center md:justify-evenly h-max overflow-x-auto pink-scroll">
-            {recommended?.map((v, i) => (
+            {recommendedRef.current?.map((v, i) => (
               <div
                 key={v.slug}
                 className="relative md:min-w-0 max-w-[60vw] w-full"
