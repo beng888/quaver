@@ -112,6 +112,11 @@ textarea {
   }
 }
 
+.show-on-load.show {
+  transform: translate(0) rotate(0) scale(1);
+  opacity: 1;
+}
+
 .show {
   transform: translate(0) rotate(0) scale(1);
   opacity: 1;

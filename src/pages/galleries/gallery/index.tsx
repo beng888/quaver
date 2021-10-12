@@ -5,18 +5,15 @@ import React, { useEffect, useRef, useState } from "react";
 import Item from "./Item";
 import { useLocomotiveScroll } from "react-locomotive-scroll";
 import Icon from "@lib/icons";
+import ItemMobile from "./ItemMobile";
 
 export default function Gallery({ data }) {
   const divRef = useRef(null);
   const containerRef = useRef(null);
-  const { isMobile, navMarker, ReturnUrl, ShowSlider, SliderImages, Slide } =
-    useGlobalContext();
+  const { isMobile, navMarker, ReturnUrl } = useGlobalContext();
   const { scroll } = useLocomotiveScroll();
   const [, setReturnUrl] = ReturnUrl;
   const [, SetNavMarker] = navMarker;
-  const [, setShowSlider] = ShowSlider;
-  const [, setSliderImages] = SliderImages;
-  const [, setSlide] = Slide;
 
   useEffect(() => {
     if (isMobile && scroll) location.reload();
@@ -154,22 +151,7 @@ export default function Gallery({ data }) {
 
         <div className="min-h-screen grid grid-cols-2 sm:grid-cols-3 gap-4">
           {data?.images?.map((v, i) => (
-            <div
-              onClick={() => {
-                setShowSlider(true);
-                setSliderImages(data?.images);
-                setSlide(i);
-              }}
-              key={v.fileName}
-              className="w-[90%] h-[45vw] sm:h-[30vw] mx-auto relative cursor-pointer"
-            >
-              <Image
-                src={v.url}
-                alt={v.fileName}
-                layout="fill"
-                objectFit="cover"
-              />
-            </div>
+            <ItemMobile v={v} i={i} key={v.fileName} data={data} />
           ))}
         </div>
         {/* <div

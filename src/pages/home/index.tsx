@@ -87,8 +87,9 @@ export default function Home({ data }) {
         </svg>
         <div
           data-scroll
-          data-scroll-class={showLogo && "show"}
-          className="absolute right-0 duration-1000 opacity-0 transform w-2/3 sm:w-1/2 h-full translate-x-1/2 delay-300 z-10 pt-[5vw]"
+          data-scroll-class="show-on-load"
+          className={`absolute right-0 duration-1000 opacity-0 transform w-2/3 sm:w-1/2 h-full translate-x-1/2 delay-300 z-10 pt-[5vw]
+        ${showLogo && "show"} `}
         >
           <div className="relative h-full transform -translate-y-24 sm:h-4/5 sm:-translate-y-0">
             <Image

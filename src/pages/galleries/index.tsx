@@ -5,16 +5,14 @@ import React, { useEffect } from "react";
 import { useLocomotiveScroll } from "react-locomotive-scroll";
 import { sweetTemptations } from "@static/index";
 import Icon from "@lib/icons";
+import ItemImage from "./ItemImage";
 
 export default function Galleries(galleries) {
   const { scroll } = useLocomotiveScroll();
 
-  const { navMarker, ShowSlider, SliderImages, Slide } = useGlobalContext();
+  const { navMarker } = useGlobalContext();
 
   const [, SetNavMarker] = navMarker;
-  const [, setShowSlider] = ShowSlider;
-  const [, setSliderImages] = SliderImages;
-  const [, setSlide] = Slide;
 
   useEffect(() => {
     scroll?.on("call", (i) => SetNavMarker(i));
@@ -95,21 +93,7 @@ export default function Galleries(galleries) {
             className="flex h-full w-full flex-wrap justify-center gap-2 opacity-0 duration-1000 delay-150 my-[10vw]"
           >
             {g.images.map((i, I) => (
-              <Image
-                key={i.fileName}
-                src={i.url}
-                alt={i.fileName}
-                layout="intrinsic"
-                height={300}
-                width={300}
-                objectFit="cover"
-                className="cursor-pointer"
-                onClick={() => {
-                  setShowSlider(true);
-                  setSliderImages(g.images);
-                  setSlide(I);
-                }}
-              />
+              <ItemImage i={i} I={I} g={g} key={i.fileName} />
             ))}
           </div>
         </div>

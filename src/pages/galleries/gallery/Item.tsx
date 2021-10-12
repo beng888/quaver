@@ -6,6 +6,7 @@ export default function Item({ d, i }) {
   const ref = useRef(null);
   const [reveal, setReveal] = useState(false);
   const onScreen = useOnScreen(ref);
+  const [showImage, setShowImage] = useState(false);
 
   useEffect(() => {
     if (onScreen) setReveal(onScreen);
@@ -44,7 +45,10 @@ export default function Item({ d, i }) {
           // data-scroll-class="show-clip-y"
           className="h-full w-full relative duration-[2s]"
           style={{
-            clipPath: reveal ? "inset(0% 0% 0% 0%)" : "inset(0% 100% 0% 0%)",
+            clipPath:
+              reveal && showImage
+                ? "inset(0% 0% 0% 0%)"
+                : "inset(0% 100% 0% 0%)",
             transitionTimingFunction: "cubic-bezier(0.77, 0, 0.175, 1)",
           }}
         >
@@ -53,6 +57,7 @@ export default function Item({ d, i }) {
             alt={d.fileName}
             layout="fill"
             objectFit="contain"
+            onLoad={() => setShowImage(true)}
           />
         </div>
       </div>
