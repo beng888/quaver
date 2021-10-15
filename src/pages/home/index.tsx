@@ -52,6 +52,12 @@ export default function Home({ data }) {
     if (ValModalOpen) scroll?.stop();
   }, [ValModalOpen, scroll]);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setShowLogo(true);
+    }, 2000);
+  }, []);
+
   return (
     <main className="relative">
       <section
