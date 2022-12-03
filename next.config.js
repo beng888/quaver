@@ -6,7 +6,7 @@ module.exports = {
     defaultLocale: "en",
   },
   images: {
-    domains: ["media.graphcms.com"],
+    domains: ["media.graphcms.com", "media.graphassets.com"],
   },
 };
 // env: {},
