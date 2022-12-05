@@ -37,7 +37,7 @@ export default function Gallery({ data }) {
     //   }px`;
     // }, 2000);
 
-    console.log(document.getElementById("gallery-container")?.clientWidth);
+    // console.log(document.getElementById("gallery-container")?.clientWidth);
   }, []);
 
   useEffect(() => {

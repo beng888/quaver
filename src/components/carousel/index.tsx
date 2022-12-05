@@ -54,7 +54,7 @@ export default function Carousel({ data }) {
         className="w-[fit-content] pointer-events-auto"
         onClick={() => SetModalOpen(false)}
       >
-        <Button cls="w-[fit-content] select-auto bg-tertiary">
+        <Button cls="w-[fit-content] select-auto bg-tertiary md:py-2 md:px-4">
           See Gallery
         </Button>
       </a>
@@ -67,14 +67,14 @@ export default function Carousel({ data }) {
         type="arrow"
         stroke="white"
         strokeWidth={7}
-        className="w-10 h-7 md:h-full p-0 md:w-16 md:p-3 transform rotate-180 bg-[#B8CAD5]"
+        className="w-12 h-8 md:h-full p-0 md:w-16 md:p-3 transform rotate-180 bg-[#B8CAD5]"
         onClick={() => setSlide(slide > 0 ? slide - 1 : slides - 1)}
       />
       <Icon
         type="arrow"
         stroke="white"
         strokeWidth={7}
-        className="w-10 h-7 md:h-full p-0 md:w-16 md:p-3 bg-[#B8CAD5]"
+        className="w-12 h-8 md:h-full p-0 md:w-16 md:p-3 bg-[#B8CAD5]"
         onClick={() => setSlide(slide < slides - 1 ? slide + 1 : 0)}
       />
     </>
@@ -87,7 +87,7 @@ export default function Carousel({ data }) {
       className="cursor-[grab] w-full h-full"
     >
       <div className="flex flex-col-reverse md:flex-row md:px-6 justify-end relative h-full max-w-6xl mx-auto pointer-events-none select-none">
-        <div className="z-10 relative md:absolute left-0 h-60 md:h-full md:px-4 flex flex-col  md:justify-center w-full md:w-[35%]">
+        <div className="z-10 relative md:absolute left-0 h-96 md:h-full md:px-4 flex flex-col  md:justify-center w-full md:w-[35%]">
           <div className="absolute w-full h-full md:h-[45%] md:min-h-[325px] my-auto z-10">
             {data?.cakes?.map((c, i) => (
               <div
@@ -101,7 +101,7 @@ export default function Carousel({ data }) {
                     slide === i
                       ? "z-10  opacity-100 delay-[1.5s]"
                       : "opacity-0 duration-1000"
-                  }  absolute transform flex flex-col w-full h-full p-[2vw] pb-4 text-left bg-white`}
+                  }  absolute transform flex flex-col w-full h-full p-2 md:p-[2vw] pb-2 md:pb-4 text-left bg-white`}
                 >
                   <div
                     className="inset-y-0 absolute w-2 left-0"
@@ -111,35 +111,37 @@ export default function Carousel({ data }) {
                   />
 
                   <div className="grid pl-2 h-full">
-                    <p className="flex justify-between font-semibold md:text-xl capitalize">
+                    <div className="flex justify-between font-semibold text-2xl capitalize">
                       {c.title}
-                      <div className="md:hidden flex gap-2 pointer-events-auto">
-                        {/* {c.gallery?.slug && arrows} */}
-                        {arrows}
-                      </div>
-                    </p>
+                    </div>
                     <p className="line-clamp clamp-2 text-sm md:text-base h-[fit-content]">
                       {c.description}
                     </p>
 
-                    <div className="flex flex-col-reverse md:gap-4 w-max md:w-full">
-                      <div className="flex gap-4 md:gap-2 md:flex-col justify-between whitespace-nowrap">
-                        <Link href={`/${data.slug}/${c.slug}`}>
-                          <a
-                            className="w-[fit-content] pointer-events-auto"
-                            onClick={() => SetModalOpen(false)}
-                          >
-                            <Button cls="w-[fit-content] select-auto">
-                              See More
-                            </Button>
-                          </a>
-                        </Link>
-                        <div>{c.gallery?.slug && galleryButton(c)}</div>
+                    <div className="flex flex-col-reverse md:gap-2 w-full md:w-full h-full justify-between">
+                      <div className="flex gap-4">
+                        <div className="flex gap-4 md:gap-2 md:flex-col justify-between whitespace-nowrap">
+                          <Link href={`/${data.slug}/${c.slug}`}>
+                            <a
+                              className="w-[fit-content] pointer-events-auto"
+                              onClick={() => SetModalOpen(false)}
+                            >
+                              <Button cls="w-[fit-content] select-auto md:py-2 md:px-4">
+                                See More
+                              </Button>
+                            </a>
+                          </Link>
+                          <div>{c.gallery?.slug && galleryButton(c)}</div>
+                        </div>
+                        <div className="md:hidden flex gap-2 pointer-events-auto">
+                          {/* {c.gallery?.slug && arrows} */}
+                          {arrows}
+                        </div>
                       </div>
-                      <div className="grid text-xs pl-2 gap-y-1 my-1">
-                        {isMobile
-                          ? c.pricing.slice(0, 3).map((v) => <b key={v}>{v}</b>)
-                          : c.pricing.map((v) => <b key={v}>{v} </b>)}
+                      <div className="grid text-xs pl-2 gap-y-1 pb-2 md:pb-0">
+                        {c.pricing.map((v) => (
+                          <b key={v}>{v} </b>
+                        ))}
                       </div>
                     </div>
                   </div>

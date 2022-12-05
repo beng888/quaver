@@ -33,7 +33,7 @@ export default function Cake({ data }) {
   //   .sort(() => 0.5 - Math.random())
   //   .slice(0, 3);
 
-  console.log("%c⧭", "color: #ff0000", recommendedRef.current);
+  // console.log("%c⧭", "color: #ff0000", recommendedRef.current);
 
   useEffect(() => {
     scroll?.on("call", (i) => {

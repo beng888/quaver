@@ -24,8 +24,8 @@ export default function Slider() {
 
   const length = sliderImages.length - 1;
 
-  console.log(SliderImages?.[0]?.[0]?.alt);
-  console.log(SliderImages);
+  // console.log(SliderImages?.[0]?.[0]?.alt);
+  // console.log(SliderImages);
 
   return (
     <div className="fixed inset-0 text-4xl flex justify-center text-white z-50">
